@@ -1,0 +1,6 @@
+===== Communication =====
+
+Most Gearman related communication happens on IRC or on the Google groups mailing list.
+
+  * Google Group/Mailing List: [[http://groups.google.com/group/gearman|Gearman group on Google Groups]]
+  * IRC Channel: [[irc://irc.freenode.net/#gearman|#gearman on irc.freenode.net]]

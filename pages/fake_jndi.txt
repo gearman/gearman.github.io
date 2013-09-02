@@ -1,0 +1,37 @@
+[[gearman_jms_readme|Back (gearman-jms WiKi)]]
+==== Fake JNDI ===
+
+In most Java Enterprise environments (the main users of JMS), the developers will have a proprietary [[http://java.sun.com/products/jndi/|JNDI]] implementation that is used for obtaining the Administered Objects (in this case, the ConnectionFactory).
+
+Since gearman-jms is an API and not a end-user client application, we make use of a 'fake JNDI' for testing purposes. The Shell application is a console program that allows the user to create a 'named' ConnectionFactory instance. This is then serialized to disk. Now, when applications use the initial context to find administered objects by name, the serialized instance from disk will be handed to them. 
+
+The program 'org.gearman.jms.Shell' utilizes the fake JNDI. Executing this will bring up a command console. Enter the command 'mkcf $UniqueName' into the shell and press enter. For example, if I wanted to make a named ConnectionFactory called "myCF", the Shell would look like:
+
+<code>
+Gearman-JMS Administrator Shell v.1
+
+gearman> mkcf myCF
+</code>
+
+Now, the 'myCF' ConnectionFactory is serialized on disk and accessible via InitialContext. Here is a Java code example for obtaining the 'myCF' ConnectionFactory via InitialContext.
+
+<code java>
+Context jndi = new InitialContext();
+ConnectionFactory cf = (ConnectionFactory) jndi.lookup("myCF");
+</code>
+
+==== Commands ====
+For other commands and options, type 'help' at the command line. This will display a list of known commands:
+
+<code>
+Gearman-JMS Administrator Shell v.1
+
+gearman> help
+ls		Lists all of the administrated object
+rm		Removes administrated objects
+mkcf		Makes an instance of a ConnectionFactory
+mkdest		Makes an instance of a Destination
+help		Displays information about a command
+</code>
+
+Typing 'help $command' will display additional information about that specific command.

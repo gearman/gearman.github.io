@@ -1,0 +1,16 @@
+====== Gearman Unit Tests ======
+
+
+==== Compile All Unit Tests ====
+make clean; make; make tests;
+
+==== Compile a Unit Test ====
+
+==== Run a Unit Test ====
+./tests/round_robin_test
+
+===== Creating a Unit Test ====
+ Create a header and a cc file that mirror the file structure hierarchy of the main project. 
+
+  * Create file tests/app_source_target/sub_target/feature_test.h
+  * Create file tests/app_source_target/sub_target/feature_test.cc

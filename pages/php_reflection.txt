@@ -1,0 +1,126 @@
+This is the PHP extension reflection output for version 0.6.0, optional arguments in //italics//.
+
+**GearmanClient**
+
+  * %%__construct()%%
+  * returnCode()
+  * clone()
+  * error()
+  * getErrno()
+  * options()
+  * setOptions($option)
+  * addOptions($option)
+  * removeOptions($option)
+  * timeout()
+  * setTimeout($timeout)
+  * context()
+  * setContext($data)
+  * addServer($host, $port)
+  * addServers($servers)
+  * wait()
+  * do($function_name, $workload, //$unique//)
+  * doHigh($function_name, $workload, //$unique//)
+  * doLow($function_name, $workload, //$unique//)
+  * doJobHandle()
+  * doStatus()
+  * doBackground($function_name, $workload, //$unique//)
+  * doHighBackground($function_name, $workload, //$unique//)
+  * doLowBackground($function_name, $workload, //$unique//)
+  * jobStatus($job_handle)
+  * echo($workload)
+  * addTask($function_name, $workload, //$data//, //$unique//)
+  * addTaskHigh($function_name, $workload, //$data//, //$unique//)
+  * addTaskLow($function_name, $workload, //$data//, //$unique//)
+  * addTaskBackground($function_name, $workload, //$data//, //$unique//)
+  * addTaskHighBackground($function_name, $workload, //$data//, //$unique//)
+  * addTaskLowBackground($function_name, $workload, //$data//, //$unique//)
+  * addTaskStatus($job_handle, //$data//)
+  * setWorkloadCallback($callback)
+  * setCreatedCallback($callback)
+  * setDataCallback($callback)
+  * setWarningCallback($client_object, //$callback//)
+  * setStatusCallback($callback)
+  * setCompleteCallback($callback)
+  * setExceptionCallback($callback)
+  * setFailCallback($callback)
+  * clearCallbacks()
+  * runTasks()
+
+**GearmanTask**
+
+  * returnCode()
+  * functionName()
+  * unique()
+  * jobHandle()
+  * isKnown()
+  * isRunning()
+  * taskNumerator()
+  * taskDenominator()
+  * sendWorkload($data)
+  * data()
+  * dataSize()
+  * recvData($data_len)
+
+**GearmanWorker**
+
+  * %%__construct()%%
+  * returnCode()
+  * clone()
+  * error()
+  * getErrno()
+  * options()
+  * setOptions($option)
+  * addOptions($option)
+  * removeOptions($option)
+  * timeout()
+  * setTimeout($timeout)
+  * addServer(//$host//, //$port//)
+  * addServers($servers)
+  * wait()
+  * register($function_name, //$timeout//)
+  * unregister($function_name)
+  * unregisterAll()
+  * addFunction($function_name, $function, //$data//, //$timeout//)
+  * work()
+  * echo($workload)
+
+**GearmanJob**
+
+  * returnCode()
+  * setReturn($gearman_return_t)
+  * sendData($data)
+  * sendWarning($warning)
+  * sendStatus($numerator, $denominator)
+  * sendComplete($result)
+  * sendException($exception)
+  * sendFail()
+  * handle()
+  * functionName()
+  * unique()
+  * workload()
+  * workloadSize()
+
+Output generated with:
+<code>
+$e= new ReflectionExtension('gearman');
+foreach ($e->getClasses() as $c)
+{
+  print '**' . $c->name . "**\n\n";
+  foreach ($c->getMethods() as $m)
+  {
+    print '  * ' . $m->name . '(';
+    $sep= '';
+    foreach ($m->getParameters() as $p)
+    {
+      print $sep;
+      $sep= ', ';
+      if ($p->isOptional())
+        print '//$' . $p->name . '//';
+      else
+        print '$' . $p->name;
+    }
+    print ")\n";
+  }
+  print "\n";
+}
+</code>

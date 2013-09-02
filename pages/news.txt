@@ -1,0 +1,34 @@
+===== News =====
+* ** [2013-04-02] ** Version 0.6 of the gearman-java library released! You can find it at [[https://launchpad.net/gearman-java/trunk/0.06/+download/gearman-java-0.6.jar|Launchpad]] and on the Sonatype OSS Maven Repository at [[https://oss.sonatype.org/index.html#nexus-search;quick~gearman-java|sonatype]].
+    * Minor bug fixes
+
+
+* ** [2012-09-06] ** Version 1.0.1 of the GA server has now been released. You can find it at [[https://launchpad.net/gearmand/+download|Launchpad]].
+    * Minor bug fixes
+
+
+* ** [2012-09-06] ** Version 1.1.2 and 0.41 of the Gearman Server and C library released! You can find it at [[https://launchpad.net/gearmand/+download|Launchpad]].
+    * Switched from --having-debug to --enable-debug
+    * Fix for SQLITE, it wasn't replaying its queue on startup.
+    * More testing done now on durable queues.
+
+* ** [2012-10-10] ** Maven artifacts for the gearman-java library are now available on the Sonatype OSS Maven Repository at [[https://oss.sonatype.org/index.html#nexus-search;quick~gearman-java|sonatype]].
+
+* ** [2012-09-24] ** Version 0.05 of the gearman-java library released! You can find it at [[https://launchpad.net/gearman-java/trunk/0.05/+download/gearman-java-0.5.jar|Launchpad]].
+
+* ** [2012-09-06] ** Version 1.1.0 of the Gearman Server and C library released! You can find it at [[https://launchpad.net/gearmand/+download|Launchpad]].
+    * ABI Fix.
+    * First release in the [[https://launchpad.net/gearmand/1.2|1.2 series]].
+
+* ** [2012-09-03] ** Version 0.37 of the Gearman Server and C library released! You can find it at [[https://launchpad.net/gearmand/+download|Launchpad]].
+    * Fix compiler issues found with older versions of gcc.
+    * 0.37 is the release candidate for the [[https://launchpad.net/gearmand/1.0| 1.0 series]].
+
+* ** [2012-04-12] ** java-gearman-service v0.6 has been released. The following changes have been made:
+    * The service now uses the slf4j logging facade, allowing the user to have better control over logging.
+    * Persistent background jobs are now supported though an application hook
+    * The API has been updated to be more user friendly, and it makes it easier to create divide-and-conquer/mapreduce applications (breaks the code of previous versions)
+    * A .properties file now may be used to set property values and finetune application.
+    * The javadocs have been completed
+    * Various bug fixes
+You can find the newest version on the google code page ([http://code.google.com/p/java-gearman-service/])

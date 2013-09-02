@@ -1,0 +1,114 @@
+====== Gearman PHP Extension - Quick Start ======
+
+==== About Gearman PHP Extension ====
+The Gearman PHP Extension allows you to write Gearman clients and workers using PHP.
+
+You can find a more detailed set of information on the Gearman PECL driver on [[http://www.php.net/manual/en/book.gearman.php]].
+==== Installing Gearman PHP Extension ====
+Gearman PHP Extension available for download at [[http://pecl.php.net/package/gearman|PECL]]
+
+Before you can build the php extension, you must install gearmand and the libgearman 'c' library. Luckily, this is simple.
+    % tar -xvzf  gearmand-version.tar.gz
+    % cd gearmand
+    % ./configure
+    % make
+    % make install
+
+Now that gearmand and libgearman are installed, you build the extension like you would any other php extension. In this example we will use version 1.1.1, but you should consider using whatever the latest version is.
+
+    % tar -xvfz gearman-1.1.1.tgz
+    % cd gearman-1.1.1
+    % phpize
+    % ./configure
+    % make
+    % make install
+
+Once the module is installed, you will need to add it to your php.ini file. It is not uncommon to have multiple ini files, so make sure you add it to all of the appropriate sapi ini files. Run the following command to see a list of which ini files you need to edit.
+
+    % php --ini 
+
+Once you know which ini files you want to edit, add the line below to the file.
+
+    extension=gearman.so
+
+Now you can check to see that the module is loaded correctly with the command
+
+    % php --info | grep "gearman support"
+    gearman support => enabled
+==== It's installed. Now what? ====
+Now that you have gearmand and the php extension installed, you must be itching to try it out. Before you jump in, there are a few things that are useful to know about gearman. There are three major components to gearman.
+
+== Job Server ==
+The server keeps track of pending "jobs" //We will talk about these more later.// What is important to know for now is that the server must be running in order for your clients and workers to function. There are currently two servers. The original server was written in perl. We just installed the newer 'C' server gearmand so we will use that in our example.
+
+== Client ==
+A client has some form of blob data and wants to farm out the processing of the data to the cloud. To do so, it makes a connection to the Server and requests that the server perform some function on that data.
+
+== Worker ==
+Workers register functions with the server that are written to "work" on data provided to it by a client.
+
+
+==== An Example Client ====
+<code>
+<?php
+# Create our client object.
+$client= new GearmanClient();
+ 
+# Add default server (localhost).
+$client->addServer("localhost", 4730);
+ 
+echo "Sending job\n";
+ 
+# Send reverse job
+$result = $client->do("reverse", "Hello!");
+if ($result)
+  echo "Success: $result\n";
+?>
+</code>
+
+==== An Example Worker ====
+
+<code>
+<?php
+# Create our worker object.
+$worker= new GearmanWorker();
+ 
+# Add default server (localhost).
+$worker->addServer("localhost", 4730);
+ 
+# Register function "reverse" with the server.
+$worker->addFunction("reverse", "reverse_fn");
+ 
+while (1)
+{
+  print "Waiting for job...\n";
+ 
+  $ret= $worker->work();
+  if ($worker->returnCode() != GEARMAN_SUCCESS)
+    break;
+}
+ 
+# A much simple reverse function
+function reverse_fn($job)
+{
+  $workload= $job->workload();
+  echo "Received job: " . $job->handle() . "\n";
+  echo "Workload: $workload\n"; 
+  $result= strrev($workload);
+  echo "Result: $result\n";
+  return $result;
+}
+?>
+</code>
+==== Putting it all together ====
+Now that we have our client and our worker, startup the server, then start the worker, then the client. You should see something like the following.
+
+{{:gmoutput.png|}}
+
+==== Whats Next ====
+There are a few more complicated examples in the Gearman PHP Extension examples/ directory, including background jobs, and tasks.
+
+==== Running Gearman Workers ====
+Keeping PHP workers running can be a complicated task. There are two methods most used.
+  * Use [[https://github.com/brianlmoon/GearmanManager/|GearmanManager]] for running your PHP workers. GearmanManager trades some flexibility in how your workers are written with abstracting the boilerplate and connection handling.
+  * Write your workers as the example above and use something like [[http://supervisord.org/|Supervisor]] to run them.

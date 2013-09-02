@@ -1,0 +1,39 @@
+A background queue for php's ''mail()'' function.
+
+The worker:
+<code php>
+<?php
+$gmw = new GearmanWorker();
+$gmw->addServer();
+$gmw->addFunction("php_mail", "gm_mail");
+while(1)
+  $gmw->work();
+
+function gm_mail($job, $data=NULL)
+{
+  list($to, $subject, $message, $additional_headers, $additional_parameters) = 
+    json_decode($job->workload());
+  
+  $rv = mail($to, $subject, $message, $additional_headers, $additional_parameters);
+  echo "emailed $to: $subject\n";
+  return $rv;
+}
+</code>
+
+And an example client that mails a bunch of things:
+<code php>
+<?php
+
+$gmc= new GearmanClient();
+$gmc->addServer();
+
+foreach(range(1,1000) as $i){
+  $handle = $gmc->doBackground('php_mail', json_encode(array('example@example.com', 'Test Subject ' . $i, 'Test Body')));
+  if ($gmc->returnCode() != GEARMAN_SUCCESS){
+    echo "bad return code!\n";
+    return;
+  }
+}
+</code>
+
+Calling ''mail()'' directly in the client takes about 16s. With a persistent queue backed by postgresql, the client runs in about 700ms. Without a persistent queue it takes about 120ms, ~55ms of which is just php starting up and looping over ''range(1,1000)''. The client could be sped up further by adding an intermediary worker that takes a list of ''php_mail'' calls in bulk and then adds them individually to the ''php_mail'' queue; that is, removing the overhead of calling ''$gmc->doBackground()'' 1000 times.

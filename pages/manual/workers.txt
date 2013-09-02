@@ -1,0 +1,41 @@
+===== Workers =====
+
+Workers are the major players behind Gearman operations. They receive tasks from the Gearman Job Server, and act upon those tasks according to predefined functions and commands. Workers can have as little to one function, or as many as desired. When a worker starts up it attempts to connect to a defined Gearman Job Server, where it then informs the Job Server of all different functions the Worker is capable of doing. The worker then returns to a sleep state, where it waits for a wakeup command from the Job Server.
+
+===== Basic Worker =====
+
+Every worker has a basic schema that must be met in order for the worker program to run correctly. The worker object must be first created, informed of Gearman Job Servers, assigned functions and function names to do jobs, and placed in a loop to wait for work. 
+
+<code php>
+<?php
+// ---------------------------------------------
+// START Basic Worker Creation
+
+// Create Worker Object
+$worker = new GearmanWorker();
+// Add Gearman Job Servers to Worker
+$worker -> addServer("127.0.0.1","4703");
+
+// END Basic Worker Creation
+// ---------------------------------------------
+
+// Add Gearman Functions
+
+// Gearman Worker Main Loop
+while (1)
+{
+  $worker->work();
+  if($worker->returnCode() != GEARMAN_SUCCESS)
+    break;
+}
+?>
+</code>
+
+The problem with our Worker right now is that it doesn't have any Functions! If you tried to run this PHP worker as is, you would get this error:
+<code>
+Warning: GearmanWorker::work(): gearman_worker_grab_job:no functions have been registered in /home/user/gearman/myWorker.php on line 18
+</code>
+
+So let's go ahead and make this "Nowhere Man" worker useful and teach him a trick. 
+
+===== Advanced Worker =====

@@ -1,0 +1,123 @@
+==== Mass PDF quote via email =====
+
+Current code of this can be found as a [[https://gist.github.com/2045235|gist on GitHub]].  The code was created to allow the client to select multiple quotes, in a custom quoting system we created, and then hit "Quick Email" and have them sent off.
+
+**Problem:** When the customer hit the Quick Email button it would load really slow.  This is due to the fact that he would email over 10-15 clients at a time.
+
+**Solution:** Utilize Gearman to handle the heavy lifting!
+
+**Dependencies:** Gearman-PECL, [[http://sourceforge.net/projects/phpmailer|PHPMailer]] and [[http://www.tcpdf.org|TCPDF]]
+
+
+=== Client Side Code ===
+
+<code php>
+<?php
+# Client side code
+# create our client object
+$gmclient= new GearmanClient();
+
+# add the default server (localhost)
+$gmclient->addServer();
+
+# run email client in the background
+$arr = array($_GET['id'],$_GET['msg']);
+$data = serialize($arr); //serialize to send data
+$job_handle = $gmclient->doBackground("email_quote", $data); //run email_quote function in gearman worker
+
+if ($gmclient->returnCode() != GEARMAN_SUCCESS)
+{
+  echo "Bad return code\n";
+  exit;
+}
+
+?>
+</code>
+
+==== Background Email Worker ====
+
+<code php>
+<?php
+// include TCPDF information and PHPMailer information for your installation
+// there are some internal functions that are in other includes but i omitted them for the sake of a lengthy GIST
+
+echo "Starting\n";
+$gmworker= new GearmanWorker();
+$gmworker->addServer();
+$gmworker->addFunction("email_quote","email_fn");
+
+print "Waiting for job...\n";
+while($gmworker->work())
+{
+  if ($gmworker->returnCode() != GEARMAN_SUCCESS)
+  {
+    echo "return_code: " . $gmworker->returnCode() . "\n";
+    break;
+  }
+}
+
+
+function email_fn($job)
+{
+	echo "Received job: " . $job->handle() . "\n";
+	$data = unserialize($job->workload());  //expecting serialized data (PDF id and msg)
+	echo "ID : ".$data[0] . "\n";
+	echo "Msg : ".$data[1] . "\n"; //optional
+	$id = $data[0]; 
+	$msg = $data[1];
+
+        echo "Creating PDF\n";
+	$url  = 'http://www.example.com/pdf.php?id='.$id; //used to generate a PDF using TCPDF
+	$path = 'quotes/'.$id.'.pdf'; //save path for PDF
+	$fp = fopen($path, 'w'); //open file path for saving PDF
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_FILE, $fp);
+	$data = curl_exec($ch);
+	curl_close($ch);
+	fclose($fp);
+			
+	echo "Instantiating PHPMailer\n";
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->Host = "ssl://smtpauth.centurytel.net";
+	$mail->SMTPDebug = 1;
+	$mail->SMTPAuth = true;
+	$mail->Port = 465;
+	$mail->Username = 'your@email.com';
+	$mail->Password = 'strongpassword';
+	$mail->SetFrom('from@me.com', 'Stephen Hawking');
+
+	echo "Generating Data\n";
+	$body = "Hello,<br>
+	<br>
+	Attached is the quote you requested.  If there is anything else we can assist you with, please let us know
+        <br>
+	<br>
+	Thank You<br>";
+
+	if ($msg != ''){
+		$body .= "<br>Personal Message: " .$msg;
+	}
+	
+	try {
+	 $mail->AddReplyTo('from@me.com','Stephen Hawking');
+	 $emailarray = explode(";",$contact[1]);
+	 $mail->AddAddress($email,'');
+ 	 echo "Addressing Contacts\n";
+	 $mail->Subject = 'Quote#: '.$id;
+	 $mail->AddAttachment('quotes/'.$id.'.pdf');
+	 $mail->AltBody = 'Please use an HTML compatible email viewer to view this message!';
+	 $mail->MsgHTML($body);
+	 $mail->Send();
+	} catch (phpmailerException $e) {
+	 die( $e->errorMessage()); //Pretty error!
+	} catch (Exception $e) {
+	 die( $e->getMessage()); //not pretty :(
+	}
+
+	set_quote_emailed($id);
+	return ($id);
+}
+
+?>
+</code>

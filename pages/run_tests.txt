@@ -1,0 +1,5 @@
+[[gearman_jms_readme|Back (gearman-jms WiKi)]]
+==== Running the Tests ====
+
+  - Run 'gearmand' Job Server on a host machine (can be your own localhost)
+  - At this point, you should be able to run the tests using JUnit 4

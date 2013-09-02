@@ -1,0 +1,39 @@
+===== General =====
+
+  * [[Getting Started]]
+  * [[Manual]]
+  * [[https://blueprints.launchpad.net/gearmand|Gearman Blueprints]]
+===== API Documentation =====
+
+  * [[http://gearman.info/|C API Documentation]]
+  * [[http://docs.php.net/manual/en/book.gearman.php|PHP Extension Docs]]
+  * [[PHP Reflection|PHP Extension Reflection]]
+  * [[PHP Reference|PHP Extension Reference]]
+  * [[http://search.cpan.org/dist/Gearman/lib/Gearman/Client.pm|Perl Client API Documentation]]
+  * [[http://search.cpan.org/dist/Gearman/lib/Gearman/Task.pm|Perl Task (Client) API Documentation]]
+  * [[http://search.cpan.org/dist/Gearman/lib/Gearman/Worker.pm|Perl Worker API Documentation]]
+  * [[http://pear.php.net/package/Net_Gearman/docs/latest/|PHP Net_Gearman PEAR module documentation]]
+  * [[mysql_udf_readme|MySQL UDF README file]]
+  * [[http://packages.python.org/gearman/ | Python API Documentation]]
+  * [[java_client_library| Java ]]
+  * [[https://github.com/gearman-ruby/gearman-ruby | Gearman-Ruby: Official ruby library for the Gearman distributed job system]]
+  * [[https://github.com/mikespook/gearman-go | Gearman-Go: Go library for the Gearman distributed job system]]
+  * [[common_lisp_library|Common Lisp]]
+
+===== Gearman Internals =====
+
+  * [[protocol|Protocol Specification]]
+  * [[http://gearman.org/docs/dev/|C Developer Documentation]]
+
+===== Tutorials =====
+
+  * [[Gearman PHP Extension]]
+  * [[Running The Unit Tests]]
+
+===== Other Websites =====
+
+  * [[http://www.danga.com/gearman/|Original Gearman page at Danga Interactive]]
+  * [[https://launchpad.net/gearup|The Gearman Monitor project]] - cluster monitoring using gearman
+  * [[http://www.danga.com/mogilefs/|MogileFS]] - Distributed parallel fault-tolerant filesystem depending on the original Gearman implementation
+  * [[http://gearmanhq.com/|GearmanHQ]] - A hosted job queue management system for getting work done using Gearman, nearing beta
+  * [[http://datadifferential.com/|Data Differential]] - Maintainers of the GearmanD Server. Provides support and services for Gearman.

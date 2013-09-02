@@ -1,0 +1,27 @@
+====== Gearman Manual ======
+
+This manual covers generic Gearman concepts and interfaces used by many of the APIs. Examples given will use the PHP extension that wraps the C library, although it should be easy to translate the examples to the other language APIs. This manual will also focus on features provided by the job server written in C, for documentation on the Perl version of the job server see the documentation provided in the Perl module. This manual is a live document and will be updated as new functionality is added or as interfaces change. Thanks!
+
+**THE MANUAL IS CURRENTLY IN PROGRESS, SOME SECTIONS ARE INCOMPLETE**
+
+  * 1 [[manual:introduction|Introduction]]
+    * [[manual:introduction#history|History]]
+    * [[manual:introduction#implementations|Implementations]]
+  * 2 [[manual:clients|Clients]]
+    * [[manual:clients#jobs_vs_tasks|Jobs vs Tasks]]
+    * [[manual:clients#single_job_interface|Single Job Interface]]
+    * [[manual:clients#concurrent_task_interface|Concurrent Task Interface]]
+  * 3 [[manual:workers|Workers]]
+    * [[manual:workers#basic_worker|Basic Worker]]
+    * [[manual:workers#advanced_worker|Advanced Worker]]
+  * 4 [[manual:job_server|Job Server (gearmand)]]
+    * [[manual:job_server#options|Options]]
+    * [[manual:job_server#thread_model|Threading Model]]
+    * [[manual:job_server#logging|Logging]]
+    * [[manual:job_server#persistent_queues|Persistent Queues]]
+    * [[manual:job_server#extended_protocols|Extended Protocols]]
+  * 5 [[manual:command_line|Command Line Tool (gearman)]]
+    * [[manual:command_line#client_mode|Client Mode]]
+    * [[manual:command_line#worker_mode|Worker Mode]]
+  * 6 [[manual:troubleshooting|Troubleshooting Gearman]]
+    * [[manual:troubleshooting#cpanel|cPanel Install]]

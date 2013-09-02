@@ -1,0 +1,114 @@
+====== PECL PHP extension ======
+The [[http://pecl.php.net/package/gearman|PECL/Gearman extension]] uses libgearman library to provide API for communicating with gearmand, and writing clients and workers.
+
+===== FAQ =====
+
+   * //Is it possible to set the user on who's behalf a worker will do work?// Yes, simply start workers using the desired user. This can be done either by using setuidgid from daemontools (''setuidgid pavel ./worker.php''), using [[http://olivier.sessink.nl/jailkit/jk_chrootlaunch.8.html|jk_chrootlaunch]] from jailkit (''jk_chrootlaunch -j /jail -u pavel -x /scripts/worker.php'') or by using a wrapper written in php - posix extension, setuid() setgit() functions.
+   * //How does the job server handle accepted jobs when no function are registered yet?// The job server queues up the jobs just wait for workers to register (nice for race conditions when starting up). If gearman is compiled with a persistent queue module (Drizzle, MySQL, PostgreSQL, SQLite, memcached), the queue will survive restart of the job server.
+   * //Does Gearman provide some authentication mechanisms?// Not yet, currently you can only limit access by IPtable rules and by telling gearman to listen only on a specific IP by using the -L option (''gearmand -vv -L 10.0.1.1''). SASL/TLS secure authentication is planned (see [[https://blueprints.launchpad.net/gearmand|Gearman Blueprints]]).
+   * //Does Gearman understand prioritization, background/foreground jobs, parallel execution?// Yes.
+   * //What happens if I set a timeout on a worker?// This allows workers to say "don't let me run a job for function X for more than X seconds". If a worker does take longer than the timeout, gearmand will restart the job somewhere else.
+   * //Can gearman be used as a ''cron'' / ''at'' replacement?// Not yet (see this [[http://groups.google.com/group/gearman/browse_thread/thread/b9891649fb08d16b#|thread]]
+   * //Is there a way to gracefully stop a worker instead (such as for update of worker code) of killing it?// Yes and no. See this [[http://groups.google.com/group/gearman/browse_thread/thread/493e88930efffe46|thread]].
+   * //How do I know that the workers succeed/fail doing their work?// A plugin will be added ([[https://blueprints.launchpad.net/gearmand|pluggable result cache]]).
+   * //Where can I get more information on planned Gearman development?// See the [[https://blueprints.launchpad.net/gearmand|blueprints]] or search the [[http://groups.google.com/group/gearman|Gearman mailing list]].
+
+
+===== Examples =====
+
+
+   * [[gearman php extension]]
+   * [[php - synchronous image resize]]
+   * [[http://cvs.php.net/viewvc.cgi/pecl/gearman/examples/|examples distributed with pecl/gearman]]
+
+===== Function reference =====
+
+This list may include functions that are not implemented yet (see [[php reflection]] which functions are implemented).
+
+** This list below is out of date, please see the [[http://docs.php.net/manual/en/book.gearman.php|PHP Extension Docs]] for up-to-date docs **
+
+==== Gearman Client ====
+
+   * **clone()** - Clone a client object
+   * **error()** - Return an error string for the last error encountered.
+   * **options(// $options //)** - Get options for a client object
+   * **setOptions(// $options //)** - Set options for a client object
+   * **addOptions(// $options //)** - Add options for a client object
+   * **removeOptions(// $options //)** - Remove options for a client object
+   * **addServer(// $host, $port //)** - Add a job server to a client. This goes into a list of servers than can be used to run tasks. No socket I/O happens here, it is just added to a list.
+   * **do(// $function_name, $workload, $unique //)** - Run a single task and return an allocated result.
+   * **doHigh(// $function_name, $workload, $unique //)** - Run a high priority task and return an allocated result.
+   * **doLow(// $function_name, $workload, $unique //)** - Run a low priority task and return an allocated result.
+   * **doJobHandle()** - Get the job handle for the running task. This should be used between repeated do() and doHigh() calls to get information.
+   * **doStatus()** - Get the status for the running task. This should be used between repeated do() and doHigh() calls to get information.
+   * **doBackground(// $function_name, $workload, $unique //)** - Run a task in the background.
+   * **doHighBackground(// $function_name, $workload, $unique //)** - Run a high priority task in the background
+   * **doLowBackground(// $function_name, $workload, $unique //)** - Run a low priority task in the background.
+   * **jobStatus(// $job_handle //)** - Get the status for a backgound job.
+   * **echo(// $workload //)** - Send data to all job servers to see if they echo it back (good for low level debugging, you usually won't need this function).
+   * **addTask(// $function_name, $workload, $data, $unique //)** - Add a task to be run in parallel.
+   * **addTaskHigh(// $function_name, $workload, $data, $unique //)** - Add a high priority task to be run in parallel.
+   * **addTaskLow(// $function_name, $workload, $data, $unique //)** - Add a low priority task to be run in parallel.
+   * **addTaskBackground(// $function_name, $workload, $data, $unique //)** - Add a background task to be run in parallel.
+   * **addTaskHighBackground(// $function_name, $workload, $data, $unique //)** - Add a high priority background task to be run in parallel.
+   * **addTaskLowBackground(// $function_name, $workload, $data, $unique //)** - Add a low priority background task to be run in parallel.
+   * **addTaskStatus(// $job_handle, $data //)** - Add task to get the status for a backgound task in parallel.
+   * **setWorkloadCallback(// $callback //)** - Callback function when workload data needs to be sent for a task. Good for streaming large jobs into the job server without having to buffer the entire job in the client (for some clients, proxies, ...)
+   * **setCreatedCallback(// $callback //)** - 
+   * **setClientCallback(// $callback //)**
+   * **setWarningCallback(// $callback //)** - Callback function when there is a warning packet for a task
+   * **setStatusCallback(// $callback //)** - Callback function when there is a status packet for a task
+   * **setCompleteCallback(// $callback //)** - Callback function when there is a status packet for a task
+   * **setExceptionCallback(// $callback //)** - Callback function when there is a exception packet for a task.
+   * **setFailCallback(// $callback //)** - Callback function when there is a fail packet for a task
+   * **clearCallbacks()** - Clear all task callback functions
+   * **data()** - Get the application data
+   * **setData(// $data //)** - Set the application data
+   * **runTasks()** - Run tasks that have been added in parallel
+
+==== Gearman Task ====
+
+   * **returnCode()** - get last gearman_return_t
+   * **create()** - Returns a task object
+   * **functionName()** - Returns function name associated with a task.
+   * **unique()** - Returns unique identifier for a task.
+   * **jobHandle()** - Returns job handle for a task.
+   * **isKnown()** - Get status on whether a task is known or not
+   * **isRunning()** - Get status on whether a task is running or not
+   * **taskNumerator()** - Returns the numerator of percentage complete for a task.
+   * **taskDenominator()** - Returns the denominator of percentage complete for a task.
+   * **data()** - Get data being returned for a task.
+   * **dataSize()** - Get data size being returned for a task.
+   * **sendData(// $data //)** - Send packet data for a task.
+   * **recvData(// $data_len //)** - Read work or result data into a buffer for a task.
+
+
+==== Gearman Worker ====
+
+   * **clone()** - Clone a worker object
+   * **error()** - Return an error string for the last error encountered.
+   * **returnCode()** - get last gearman_return_t
+   * **setOptions(// $option, $data //)** - Set options for a worker structure
+   * **addServer(// $host, $port //)** -  Add a job server to a worker. This goes into a list of servers than can be used to run tasks. No socket I/O happens here, it is just added to a list
+   * <del>**register()**</del> (not implemented)
+   * <del>**unregister()** - Unregister function with job servers.</del> (not implemented, will be fixed in next release)
+   * <del>**unregisterAll()** - Unregister all functions with job servers</del> (not implemented, will be fixed in next release)
+   * **addFunction(// $function_name, $function, $data, $timeout //)** - Register and add callback function for worker. (The timeout specifies how many seconds the server will wait before marking a job as failed. If timeout is zero, there is no timeout.)
+   * **work()** - Wait for a job and call the appropriate callback function when it gets one.
+
+
+==== Gearman Job ====
+
+   * **returnCode()** - get last gearman_return_t
+   * **workload()** - Returns the workload for a job
+   * **workloadSize()** - Returns size of the workload for a job.
+   * **sendWarning(// $warning //)** - Send warning for a running job.
+   * **sendStatus(// $numerator, $denominator //)** - Send status information for a running job.
+   * **handle()** - Return job handle.
+   * **unique()** - Get the unique ID associated with a job.
+   * **sendData(// $data //)** - Send data for a running job.
+   * **sendComplete(// $result //)** - Send result and complete status for a job.
+   * **sendException(// $exception //)** - Send exception for a running job.
+   * **sendFail()** - Send fail status for a job.
+   * **functionName()** - Return the function name associated with a job.
+   * **setReturn(// $gearman_return_t //)** - This function will set a return value of a job

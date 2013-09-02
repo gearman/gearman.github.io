@@ -1,0 +1,7 @@
+Posting a use case for my website here, myspecv.com 
+
+Running on a fairly normal LAMP stack (+ apc(local cache) + nginx for static + memcached (more cache)).
+
+The main site is a forum, there's tracking queries on the forum and update/insert/delete queries that need to run, but aren't necessary for the display of the page that is being loaded. I'm using gearman with a very simple "sqlExecuteBackground" class (this is with Net::Gearman::Client and Net::Gearman::Worker for now, gearman php extension caused a coredump with 0.1 of extension and would not compile with 0.2 extension) to queue up the tracking queries that simply need to be "fired and forgotten". I am using (for now) 3 workers running on the same machine whose job is to login and execute a sql query. 
+
+This gives the illusion of a faster response time when browsing the site. I tried looking for a way to fork() a process in php to do the same thing within apache, but quickly discovered that's not really the way to go. There is a total of 50 lines of code to implement this from my side so far.

@@ -1,0 +1,33 @@
+We use Gearman & PHP (5.3) for keeping a 'large' amount of RSS feeds up to date regularly.
+
+There are several different worker types:
+
+
+
+Normal worker
+  * fetchURL : performs URL fetching (using curl)
+  * parseFeed : performs feed parsing using SimplePie
+
+Log worker
+  * writeLog : writes to a central log and emails warnings over a certain level (Zend Log)
+
+Database worker:
+  * runSQL : runs batched SQL commands in transactions on a (currently) central db node
+
+
+
+
+The client grabs a chunk of a calculated size of feeds and inserts the fetchURL tasks. FetchURL, if successful and if the result is "ok" will pass the contents to parseFeed. ParseFeed then parses the content and if valid forms it into sql and passes to runSQL.
+
+runSQL is called if any of the stages "fail" (i.e. invalid data or 404, etc).
+
+Most things are logged (for the moment).
+
+We currently run ~250 normal workers per node, one logging and four master works on the db node.
+
+
+
+We also use gearman for sending emails and performing "searches".
+
+
+Any questions please contact me : ukd1 on freenode, or russell.smith /at/ ukd1.co.uk

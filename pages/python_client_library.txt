@@ -1,0 +1,18 @@
+==== Python ====
+
+There are two different Python APIs, one that is a wrapper of the libgearman C library and one that is pure-Python.
+
+=== Pure Python ===
+
+A pure-Python API that can be found on PyPI as "gearman", and can be installed with "easy_install gearman".
+
+=== Python C Library Wrapper ===
+
+A python library that wraps the C interface library.
+
+  * [[http://pypi.python.org/pypi/gearman/|python-gearman]] [[http://github.com/Yelp/python-gearman|(Source)]]
+
+==== Django ====
+
+
+  * [[https://pypi.python.org/pypi?%3Aaction=search&term=django_gearman_commands&submit=search|Django Libraries]] 

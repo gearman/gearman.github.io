@@ -1,0 +1,13 @@
+===== Use Cases =====
+
+If you are using Gearman, please login to the wiki and create a use case page describing how you are using it. This will help others get an idea of the different ways Gearman can be deployed, and perhaps you will get some feedback about how to improve your usage. Thanks!
+
+  * [[PHP - Mass PDF quote email]]
+  * [[PHP - Synchronous Image Resize]]
+  * [[PHP - Feed fetching / parsing]]
+  * [[Perl - Geocoding]]
+  * [[PHP - Mail Queue]]
+  * [[http://tokutek.com/2009/10/using_gearman_for_nightly_build_and_test/| Build & Test Framework at Tokutek]]
+  * [[http://tech.backtype.com/using-gearman-for-distributed-alerts| Using Gearman For Distributed Alerts]]
+  * [[http://code.google.com/p/shard-query| Shard-Query is a PHP project which uses Net_Gearman to execute queries on horizontally partitioned databases and returns the results.  Supports aggregation.]]
+  * [[http://labs.consol.de/lang/en/nagios/mod-gearman/| Distribute Nagios Checks/Eventhandler with Gearman]]

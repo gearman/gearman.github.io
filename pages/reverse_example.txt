@@ -1,0 +1,25 @@
+=== Reverse example ===
+Before we can run our example we need to run our shell and the gearman job server
+<code>
+Gearman-JMS Administrator Shell v.1
+gearman> mkcf myCF
+</code>
+Now, we run the gearmand job server
+
+<code>
+$ gearmand -d
+</code>
+or we can also run it in debugging mode
+<code>
+$gearmnd -vv
+</code>
+
+now we can set-up our client and our work
+
+
+<code java>
+$java ReverseClient
+$java ReverseWorker
+</code>
+
+

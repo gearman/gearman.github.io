@@ -1,0 +1,9 @@
+==== Java Client Libraries ====
+
+=== java-gearman-service ===
+A asynchronous interface written entirely in java. This includes client, worker, and server implementations. java-gearman-service can be downloaded at Google Code
+  * [[java-gearman-service]
+
+=== Gearman Java ===
+A pure Java driver exists on Launchpad.
+  * [[http://launchpad.net/gearman-java|Gearman Java]]
