@@ -1,6 +1,6 @@
 ===== Upcoming Presentations =====
 
-  * None
+  * [[http://telaviv.pm.org/|TelAviv.PM October 2013 - Distributed Apps with Gearman - Issac Goldstand]]
 
 ===== Past Presentations =====
   * [[http://en.oreilly.com/mysql2011/public/schedule/detail/20211|MySQL Conference 2011 - Gearman: From the Worker's Perspective - Brian Aker]]
