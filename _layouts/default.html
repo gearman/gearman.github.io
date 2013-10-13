@@ -1,45 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" class="no-js">
-<head>
-    <meta charset="utf-8" />
-    <title>{{ page.title }} [Gearman Job Server]</title>
-    <meta name="generator" content="DokuWiki"/>
-    <meta name="robots" content="index,follow"/>
-    <meta name="date" content="2013-08-27T10:24:18+0000"/>
-    <meta name="keywords" content="gearman gearmand"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/pygments.css" />
-    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.png" />
-</head>
-<body>
-
-<div class="logo">
-    <a href="/" title="Home - Gearman Job Server"><img src="{{ site.baseurl }}/img/logo.png" alt="Gearman Job Server" /></a>
-</div>
-
-<div class="navigation">
-    <ul>
-        <li><a href="{{ site.baseurl }}/news">News</a></li>
-        <li><a href="{{ site.baseurl }}/documentation">Documentation</a></li>
-        <li><a href="{{ site.baseurl }}/getting-started">Getting Started</a></li>
-        <li><a href="{{ site.baseurl }}/download">Download</a></li>
-        <li><a href="{{ site.baseurl }}/communication">Communication</a></li>
-        <li><a href="{{ site.baseurl }}/presentations">Presentations</a></li>
-        <li><a href="{{ site.baseurl }}/user-cases">Use Cases</a></li>
-    </ul>
-</div>
+{% include header.html %}
+{% include navigation.html %}
 
 <div class="main-content"><div class="main-inner">
 {{ content }}
 </div></div>
 
-<div class="footer">
-    <p>
-        Except where otherwise noted, content on this wiki is licensed under the
-        following license: <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC Attribution-Noncommercial-Share Alike 3.0 Unported</a>
-    </p>
-</div>
-
-</body>
-</html>
+{% include footer.html %}

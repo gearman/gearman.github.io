@@ -1,4 +1,5 @@
 safe: true
 lsi: false
 pygments: true
+relative_permalinks: false
 baseurl: /gearman.org

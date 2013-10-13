@@ -1,0 +1,9 @@
+<article class="news">
+  <h2>
+    [{{ post.date | date: "%Y-%m-%d" }}]
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+  </h2>
+  <div class="post-content">
+    {{ post.content }}
+  </div>
+</article>
