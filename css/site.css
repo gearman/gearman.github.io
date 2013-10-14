@@ -124,6 +124,7 @@ html {
     border-radius: 4px;
     padding: 0 2px;
     margin: 0 2px;
+    white-space: pre;
 }
 
 .highlight {
