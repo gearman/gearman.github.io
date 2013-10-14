@@ -171,6 +171,29 @@ a:hover {
     margin: 0;
 }
 
+.code-tabs > p {
+    margin: 0;
+    padding: 0;
+}
+
+.code-tabs > p a {
+    border: 1px solid #ccc;
+    padding: 4px 8px 6px 8px;
+    margin-right: 3px;
+    z-index: 1;
+    line-height: 2em;
+}
+
+.code-tabs > p a.active {
+    font-weight: bold;
+    border-bottom: 1px solid #fff;
+}
+
+.code-tabs .highlight {
+    border-top-left-radius: 0;
+    margin-top: 0;
+}
+
 .footer {
     clear: both;
     padding: 50px 0;
