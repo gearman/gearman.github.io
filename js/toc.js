@@ -20,12 +20,13 @@ $(document).ready(function() {
     if (!no_back_to_top_links && this_level === highest_level) {
       $(header).addClass('top-level-header').after(return_to_top)
     }
+    var headerText = $(header).text();
     if (this_level === level) // same level as before; same indenting
-      html += "<li><a href='#" + header.id + "'>" + header.innerHTML + "</a>";
+      html += "<li><a href='#" + header.id + "'>" + headerText + "</a>";
     else if (this_level < level) // higher level than before; end parent ol
-      html += "</li></ol></li><li><a href='#" + header.id + "'>" + header.innerHTML + "</a>";
+      html += "</li></ol></li><li><a href='#" + header.id + "'>" + headerText + "</a>";
     else if (this_level > level) // lower level than before; expand the previous to contain a ol
-      html += "<ol><li><a href='#" + header.id + "'>" + header.innerHTML + "</a>";
+      html += "<ol><li><a href='#" + header.id + "'>" + headerText + "</a>";
     level = this_level; // update for the next one
   });
   html += "</ol>";
