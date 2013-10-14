@@ -118,6 +118,14 @@ html {
     margin-left: 25px;
 }
 
+.main-inner p > code {
+    background-color: #eee;
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding: 0 2px;
+    margin: 0 2px;
+}
+
 .highlight {
     background: #fff;
     color: #000;
