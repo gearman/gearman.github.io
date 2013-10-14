@@ -36,8 +36,8 @@ points about Gearman:
   List, Tumblr, Yelp, Etsy,... discover what others have known for years.
 
 Content is being updated regularly, so please check back often. You may also
-want to check out other forms of [communication](/communication) if you would
-like to learn more or get involved!
+want to check out other forms of [communication]({{ site.baseurl }}/communication)
+if you would like to learn more or get involved!
 
 # How Does Gearman Work?
 
@@ -60,7 +60,7 @@ look quite similar.
 We start off by writing a client application that is responsible for sending off
 the job and waiting for the result so it can print it out. It does this by using
 the Gearman client API to send some data associated with a function name, in
-this case the function **"reverse"**. The code for this is (with error handling
+this case the function `reverse`. The code for this is (with error handling
 omitted for brevity):
 
 {% highlight php %}
@@ -72,13 +72,13 @@ print $client->do("reverse", "Hello World!");
 {% endhighlight %}
 
 This code initializes a client class, configures it to use a job server with
-**add_server**(no arguments means use 127.0.0.1 with the default port), and then
-tells the client API to run the **"reverse"**function with the workload
+`add_server` (no arguments means use `127.0.0.1` with the default port), and then
+tells the client API to run the `reverse` function with the workload
 "Hello world!". The function name and arguments are completely arbitrary as far
 as Gearman is concerned, so you could send any data structure that is
 appropriate for your application (text or binary). At this point the Gearman
 client API will package up the job into a Gearman protocol packet and send it to
-the job server to find an appropriate worker that can run the **"reverse"**
+the job server to find an appropriate worker that can run the `reverse`
 function. Let's now look at the worker code:
 
 {% highlight php %}
@@ -95,20 +95,21 @@ while ($worker->work());
 <img src="/img/flow.png" alt="Gearman Flow"
      style="float: right; padding: 5px 0px 5px 10px;">
 
-This code defines a function **"my_reverse_function"** that takes a string and
+This code defines a function `my_reverse_function` that takes a string and
 returns the reverse of that string. It is used by a worker object to register a
-function named **"reverse"** after it is setup to connect to the same local job
+function named `reverse` after it is setup to connect to the same local job
 server as the client. When the job server receives the job to be run, it looks
-at the list of workers who have registered the function name **"reverse"** and
+at the list of workers who have registered the function name `reverse` and
 forwards the job on to one of the free workers. The Gearman worker API then
-takes this request, runs the function **"my_reverse_function"**, and sends the
+takes this request, runs the function `my_reverse_function`, and sends the
 result of that function back through the job server to the client.
 
 As you can see, the client and worker APIs (along with the job server) deal with
 the job management and network communication so you can focus on the application
 parts. There a few different ways you can run jobs in Gearman, including
 background for asynchronous processing and prioritized jobs. See the
-[documentation](/documentation) available for the various APIs for details.
+[documentation]({{ site.baseurl }}/documentation) available for the various APIs
+for details.
 
 # How Is Gearman Useful?
 
@@ -122,9 +123,9 @@ writing a PHP extension in C), but you may want a PHP client and a Python
 worker, or perhaps a MySQL client and a Perl worker. You can mix and match any
 of the supported language interfaces easily, you just need all applications to
 be able to understand the workload being sent. Is your favorite language not
-supported yet? Get [involved with the project](/communication), it's probably
-fairly easy for either you or one of the existing Gearman developers to put a
-language wrapper on top of the C library.
+supported yet? Get [involved with the project]({{ site.baseurl }}/communication),
+it's probably fairly easy for either you or one of the existing Gearman
+developers to put a language wrapper on top of the C library.
 
 The next way that Gearman can be useful is to put the worker code on a separate
 machine (or cluster of machines) that are better suited to do the work. Say
@@ -156,4 +157,4 @@ From here, you can scale out your clients and workers as needed. The job servers
 can easily handle having hundreds of clients and workers connected at once. You
 can draw your own physical (or virtual) machine lines where capacity allows,
 potentially distributing load to any number of machines. For more details on
-specific uses and installations, see the section on [use cases](/use-cases).
+specific uses and installations, see the section on [use cases]({{ site.baseurl }}/use-cases).
