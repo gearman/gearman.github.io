@@ -13,4 +13,4 @@ title: PHP Client Libraries
 
 ## Net Gearman PEAR module
 
- * [Net Gearman](http://pear.php.net/package/Net_Gearman/)
+ * Net Gearman at [PEAR](http://pear.php.net/package/Net_Gearman/) or [Github](https://github.com/brianlmoon/net_gearman)

@@ -127,13 +127,32 @@ a:hover {
     margin-left: 25px;
 }
 
-.main-inner p > code {
+.main-inner p > code,
+.main-inner li > code,
+.main-inner dd > code,
+.main-inner dt > code {
     background-color: #eee;
     border: 1px solid #999;
     border-radius: 4px;
     padding: 0 2px;
     margin: 0 2px;
     white-space: pre;
+}
+
+
+.main-inner dl,
+.main-inner dt,
+.main-inner dd {
+    padding: 0;
+    margin: 0;
+}
+
+.main-inner dt {
+    padding: 10px 0;
+}
+
+.main-inner dd {
+    padding: 5px 15px;
 }
 
 .highlight {
