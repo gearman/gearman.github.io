@@ -132,6 +132,7 @@ html {
     border: 1px solid #ccc;
     border-radius: 7px;
     padding: 5px 10px;
+    margin: 10px 0;
     clear: both;
     font-size: 1.2em;
 }
