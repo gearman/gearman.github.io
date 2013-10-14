@@ -3,8 +3,6 @@ layout: examples
 title: Basic Reverse Example
 ---
 
-# Basic "Reverse a string" Example
-
 This is just about the most basic gearman example that can be produced and will
 server as a teach you the basics of how the server, client, and worker interact
 with one another.
