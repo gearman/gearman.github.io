@@ -26,6 +26,10 @@ html {
     padding: 10px 0;
 }
 
+.logo img {
+    border: 0;
+}
+
 a {
     color: #2b73b7;
     text-decoration: none;
