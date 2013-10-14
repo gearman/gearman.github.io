@@ -26,6 +26,15 @@ html {
     padding: 10px 0;
 }
 
+a {
+    color: #2b73b7;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .navigation {
     position: relative;
     float: left;
@@ -36,15 +45,12 @@ html {
 .navigation li {
     padding: 3px 20px;
 }
-.navigation a {
-    color: #2b73b7;
-    font-size: .875em;
-    text-decoration: none;
-    display: block;
-}
 
-.navigation a:hover {
-    text-decoration: underline;
+.navigation a,
+.main-inner .toc a {
+    font-size: .875em;
+    line-height: .9em;
+    display: block;
 }
 
 .main-content {
@@ -60,7 +66,6 @@ html {
     border-bottom: 1px solid #ccc;
     padding: 10px 5px;
     margin: -15px -20px 5px 5px;
-    font-size: 0.875em;
 }
 
 .main-inner .toc > i {
@@ -81,6 +86,10 @@ html {
     list-style: circle;
     margin: 0 0 0 10px;
     padding: 0;
+}
+
+.main-inner .toc li a {
+    margin-left: -5px;
 }
 
 .main-inner {
