@@ -11,18 +11,18 @@ favorite is missing, please help out with a pull request!
 
 ## Basic request/reply (request-n-block):
 
- * [Basic Reverse String]({{ site.baseurl }}/examples/reverse)
- * [Geocoding]({{ site.baseurl }}/examples/geocoding)
+ * [Basic Reverse String]({{ site.baseurl }}/examples/reverse/)
+ * [Geocoding]({{ site.baseurl }}/examples/geocoding/)
 
 ## Background Jobs (fire-n-forget):
 
- * [Sending Emails]({{ site.baseurl }}/examples/send-emails)
- * [Logging]({{ site.baseurl }}/examples/logging)
+ * [Sending Emails]({{ site.baseurl }}/examples/send-emails/)
+ * [Logging]({{ site.baseurl }}/examples/logging/)
 
 ## Fanout (queue up, execute in parallel):
 
- * [Feed Fetching & Parsing]({{ site.baseurl }}/examples/feed-fetch-parse)
- * [Synchronous Image Resize]({{ site.baseurl }}/examples/image-resize)
+ * [Feed Fetching & Parsing]({{ site.baseurl }}/examples/feed-fetch-parse/)
+ * [Synchronous Image Resize]({{ site.baseurl }}/examples/image-resize/)
 
 # Gearman In The Wild
 

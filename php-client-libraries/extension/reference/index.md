@@ -54,8 +54,7 @@ Where can I get more information on planned Gearman development?
 
 ## Examples
 
- * [Basic Example]({{ site.baseurl }}/examples/basic)
- * [Synchronous Image Resize]({{ site.baseurl }}/examples/synchronous-resize)
+ * [Examples host on this site]({{ site.baseurl }}/examples/)
  * [Examples distributed with pecl/gearman](http://svn.php.net/viewvc/pecl/gearman/trunk/examples/)
 
 ## Function reference

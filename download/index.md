@@ -11,7 +11,7 @@ a new project or helped out with an existing one. Some projects are more active
 than others, each have varying features and performance, but they are all
 compatible with one another (except for some new protocol additions). If you
 need help figuring out which option would best suit your needs,
-[get in touch!]({{ site.baseurl }}/communication)
+[get in touch!]({{ site.baseurl }}/communication/)
 
 # Job Server (gearmand)
 

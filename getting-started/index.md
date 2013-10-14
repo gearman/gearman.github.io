@@ -8,15 +8,15 @@ title: 'Getting Started'
 This document is meant to provide enough information to get a basic Gearman
 installation up and running with a simple application. This document assumes a
 high-level understanding of the role of the job server, clients, and workers.
-If not, please refer to the [home page]({{ site.baseurl }}) overview. For
+If not, please refer to the [home page]({{ site.baseurl }}/) overview. For
 more detailed documentation on Gearman components and features, please refer to
-the [manual]({{ site.baseurl }}/manual).
+the [manual]({{ site.baseurl }}/manual/).
 
 ## Job Server
 
 Gearman currently has three job server implementations, but this document will
 focus on the Gearman C Job Server since this is where the most active
-development is currently. See the [download]({{ site.baseurl }}/download) page
+development is currently. See the [download]({{ site.baseurl }}/download/) page
 for other options. There are currently four ways to installed the Gearman C
 Job Server.
 
@@ -39,7 +39,7 @@ the repositories.
 #### Compile and install from tarball
 
 This is the best way to get the latest stable features. First, download the
-latest tarball from the [download]({{ site.baseurl }}/download) page or
+latest tarball from the [download]({{ site.baseurl }}/download/) page or
 [Launchpad](https://launchpad.net/gearmand/+download). Once downloaded, run:
 
 {% highlight bash %}
@@ -90,7 +90,7 @@ $ gearmand -vvv
 ## Client and Worker API
 
 With the job server installed and running, the next step is to choose a client
-and worker API. There are a number of options listed on the [download]({{ site.baseurl }}/download)
+and worker API. There are a number of options listed on the [download]({{ site.baseurl }}/download/)
 page, but this document will focus on the command line utility and the
 PHP extension.
 
@@ -318,7 +318,7 @@ $ ls -l full.jpg thumb.jpg
 
 ## Summary
 
-For further applications and examples, please see the [use-cases]({{ site.baseurl }}/use-cases).
-The [mailing list and IRC channel]({{ site.baseurl }}/communications) can act as
+For further applications and examples, please see the [examples]({{ site.baseurl }}/examples/).
+The [mailing list and IRC channel]({{ site.baseurl }}/communications/) can act as
 a sounding board for what applications may be suitable for Gearman. New ideas,
 use cases, and examples are always welcome!

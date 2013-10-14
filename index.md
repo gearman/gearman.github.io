@@ -36,7 +36,7 @@ points about Gearman:
   List, Tumblr, Yelp, Etsy,... discover what others have known for years.
 
 Content is being updated regularly, so please check back often. You may also
-want to check out other forms of [communication]({{ site.baseurl }}/communication)
+want to check out other forms of [communication]({{ site.baseurl }}/communication/)
 if you would like to learn more or get involved!
 
 # How Does Gearman Work?
@@ -108,7 +108,7 @@ As you can see, the client and worker APIs (along with the job server) deal with
 the job management and network communication so you can focus on the application
 parts. There a few different ways you can run jobs in Gearman, including
 background for asynchronous processing and prioritized jobs. See the
-[documentation]({{ site.baseurl }}/documentation) available for the various APIs
+[documentation]({{ site.baseurl }}/documentation/) available for the various APIs
 for details.
 
 # How Is Gearman Useful?
@@ -123,7 +123,7 @@ writing a PHP extension in C), but you may want a PHP client and a Python
 worker, or perhaps a MySQL client and a Perl worker. You can mix and match any
 of the supported language interfaces easily, you just need all applications to
 be able to understand the workload being sent. Is your favorite language not
-supported yet? Get [involved with the project]({{ site.baseurl }}/communication),
+supported yet? Get [involved with the project]({{ site.baseurl }}/communication/),
 it's probably fairly easy for either you or one of the existing Gearman
 developers to put a language wrapper on top of the C library.
 
@@ -157,4 +157,4 @@ From here, you can scale out your clients and workers as needed. The job servers
 can easily handle having hundreds of clients and workers connected at once. You
 can draw your own physical (or virtual) machine lines where capacity allows,
 potentially distributing load to any number of machines. For more details on
-specific uses and installations, see the section on [use cases]({{ site.baseurl }}/use-cases).
+specific uses and installations, see the section on [exanokes]({{ site.baseurl }}/examples/).
