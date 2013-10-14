@@ -92,10 +92,21 @@ html {
     padding: 15px 20px;
 }
 
-.main-inner h1 {
+.main-inner h1,
+.main-inner h2,
+.main-inner h3,
+.main-inner h4,
+.main-inner h5,
+.main-inner h6 {
     padding: 10px 0;
-    font-size: 1.5em;
 }
+
+.main-inner h1 { font-size: 1.5em; }
+.main-inner h2 { font-size: 1.4em; }
+.main-inner h3 { font-size: 1.3em; }
+.main-inner h4 { font-size: 1.2em; }
+.main-inner h5 { font-size: 1.1em; }
+.main-inner h6 { font-size: 1.0em; }
 
 .main-inner ul,
 .main-inner ol,
