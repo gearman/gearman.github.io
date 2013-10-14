@@ -41,7 +41,7 @@ if you would like to learn more or get involved!
 
 # How Does Gearman Work?
 
-<img src="/img/stack.png" alt="Gearman Stack"
+<img src="{{ site.baseurl }}/img/stack.png" alt="Gearman Stack"
      style="float: left; padding: 5px 10px 5px 0px;">
 
 A Gearman powered application consists of three parts: a client, a worker, and
@@ -92,7 +92,7 @@ $worker->addFunction("reverse", function ($job) {
 while ($worker->work());
 {% endhighlight %}
 
-<img src="/img/flow.png" alt="Gearman Flow"
+<img src="{{ site.baseurl }}/img/flow.png" alt="Gearman Flow"
      style="float: right; padding: 5px 0px 5px 10px;">
 
 This code defines a function `my_reverse_function` that takes a string and
@@ -142,7 +142,7 @@ perhaps more if they are not CPU bound). It is also seamless to add new
 machines to expand your worker pool, just boot them up, install the worker
 code, and have them connect to the existing job server.
 
-<img src="/img/cluster.png" alt="Gearman Cluster"
+<img src="{{ site.baseurl }}/img/cluster.png" alt="Gearman Cluster"
      style="float: left; padding: 5px 10px 5px 0px;">
 
 Now you're probably asking what if the job server dies? You are able to run
