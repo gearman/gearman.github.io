@@ -34,7 +34,6 @@ foreach ($e->getClasses() as $c) {
   }
   print "}\n\n";
 }
-
 {% endhighlight %}
 
 Generated:

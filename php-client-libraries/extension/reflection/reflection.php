@@ -6,13 +6,13 @@ foreach ($e->getClasses() as $c) {
   foreach ($c->getMethods() as $m) {
     print '  ';
     if ($m->isPublic()) {
-        print 'public function ';
+        print 'public';
     } elseif ($m->isProtected()) {
-        print 'protected function ';
+        print 'protected';
     } elseif ($m->isPrivate()) {
-        print 'private function ';
+        print 'private';
     }
-    print $m->name . '(';
+    print ' function ' . $m->name . '(';
     $sep = '';
     foreach ($m->getParameters() as $p) {
       print $sep;
