@@ -24,7 +24,7 @@ Job Server.
 
 #### RHEL/Fedora
 
-Run `yum install gearmand-server`
+Run `yum install gearmand` (older packages might be called `gearmand-server`)
 
 #### Debain/Ubuntu Package
 
