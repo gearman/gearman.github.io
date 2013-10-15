@@ -100,50 +100,50 @@ one which wraps the libgearman C library.
 A PHP extension that wraps the libgearman C library.
 
  * [Gearman PHP Extension (1.0.2)](http://pecl.php.net/get/gearman-1.0.2.tgz) [(Source)](http://pecl.php.net/package/gearman)
+ * [PHP Extension Reflection]({{ site.baseurl }}/php-client-libraries/extension/reflection/)
+ * [PHP Extension Reference]({{ site.baseurl }}/php-client-libraries/extension/reference/)
 
 ### Net_Gearman
 
 A pure PHP API that can be found as Net_Gearman on PEAR.
 
- * [PHP module on PEAR](http://pear.php.net/package/Net_Gearman/)
+ * Net_Gearman at [PEAR](http://pear.php.net/package/Net_Gearman/) or [Github](https://github.com/brianlmoon/net_gearman)
 
 ## Python
 
-[Python Client Library](/python_client_library)
+There are two different Python APIs, one that is a wrapper of the libgearman C
+library and one that is pure Python. There is also a package for Django.
+
+### Pure Python
+
+A pure-Python API that can be found on PyPI as "gearman", and can be installed with "easy_install gearman".
+
+### Python C Library Wrapper
+
+A python library that wraps the C interface library.
+
+ * [python-gearman](http://pypi.python.org/pypi/gearman/) ([Source](http://github.com/Yelp/python-gearman))
+
+### Django
+
+ * [Django Libraries](https://pypi.python.org/pypi?%3Aaction=search&term=django_gearman_commands&submit=search)
 
 ## Java
 
-[Java Client Libraries](/java_client_library)
+### Java Gearman Service
 
-## Databases
+"Java gearman service" is a asynchronous interface written entirely in java.
+This includes client, worker, and server implementations. java-gearman-service
+can be downloaded at Google Code
 
-### MySQL UDFs
+ * [Java Gearman Service](https://github.com/gearman/java-service)
+   ([Docs]({{ site.baseurl }}/java-gearman-service))
 
-A set of MySQL UDFs built on the libgearman C library. This exposes the client
-API functions to SQL queries, triggers, and stored procedures.
+## Gearman Java
 
- * [Gearman MySQL UDFs (0.5)](http://launchpad.net/gearman-mysql-udf/trunk/0.5/+download/gearman-mysql-udf-0.5.tar.gz)
-   [(Source)](https://launchpad.net/gearman-mysql-udf)
+A pure Java driver exists on Launchpad.
 
-### PostgreSQL UDFs
-
-A set of PostgreSQL UDFs built on the libgearman C library. This exposes the
-client API functions to SQL queries, triggers, and stored procedures.
-
- * [Gearman PostgreSQL UDFs (0.2)](http://launchpad.net/pggearman/trunk/0.2/+download/pggearman-0.2.tar.gz)
-   [(Source)](https://launchpad.net/pggearman)
-
-### Drizzle
-
-The Gearman UDFs for Drizzle are included in the main [Drizzle](http://drizzle.org)
-tree and tarballs. See ./configure options for enabling them.
-
-## JMS
-
-A JMS Provider (gearman-jms) implemented using Gearman-Java as its back-end. 
-
- * [gearman-jms API (0.1)](https://launchpad.net/gearman-jms/trunk/0.1/+download/gearman-jms-0.1.tar.gz)
-   [(Source)](https://code.launchpad.net/gearman-jms)
+ * [Gearman Java](http://launchpad.net/gearman-java)
 
 ## C# / .NET
 
@@ -164,17 +164,53 @@ Available on Launchpad as [gearman.net](https://launchpad.net/gearman.net).
 Only [source](https://code.launchpad.net/gearman.net) is available at the
 moment, no releases just yet.
 
+## Databases
+
+Gearman calls can be made from within several databases through UDFs providing
+the power of job distribution from within SQL.
+
+### MySQL
+
+A set of MySQL UDFs built on the libgearman C library. This exposes the client
+API functions to SQL queries, triggers, and stored procedures.
+
+ * [Gearman MySQL UDFs (0.5)](http://launchpad.net/gearman-mysql-udf/trunk/0.5/+download/gearman-mysql-udf-0.5.tar.gz)
+   ([Source](https://launchpad.net/gearman-mysql-udf))
+
+### PostgreSQL
+
+A set of PostgreSQL UDFs built on the libgearman C library. This exposes the
+client API functions to SQL queries, triggers, and stored procedures.
+
+ * [Gearman PostgreSQL UDFs (0.2)](http://launchpad.net/pggearman/trunk/0.2/+download/pggearman-0.2.tar.gz)
+   ([Source](https://launchpad.net/pggearman))
+
+### Drizzle
+
+The Gearman UDFs for Drizzle are included in the main [Drizzle](http://drizzle.org)
+tree and tarballs. See ./configure options for enabling them.
+
 # Tools
 
-## Gearman-Monitor
+## Gearman-Monitor (PHP)
 
 Server monitoring tool developed in PHP, to watch server statistics.
 
  * [Gearman-Monitor on GitHub](https://github.com/yugene/Gearman-Monitor)
 
-## GearmanManager
+## GearmanManager (PHP)
 
 In addition, there is a framework that can use either of the two extensions
 above for managing a group of PHP based Gearman workers.
 
  * [GearmanManager on GitHub](https://github.com/brianlmoon/GearmanManager)
+
+## Multi-process Gearman Task Server Library (Python)
+
+GMTasks contains a simple multiprocessing server for Gearman workers, designed
+for ease of configuration and maximum availability.
+
+ * [GMTasks](https://github.com/ex-nerd/gmtasks)
+
+*[UDF]: User Defined Function
+*[UDFs]: User Defined Functions
