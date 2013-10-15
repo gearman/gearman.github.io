@@ -9,17 +9,26 @@ Here are a number of common scenarios where you'll find gearman is an excellent
 fit. Each example strives to have code samples in multiple languages. If your
 favorite is missing, please help out with a pull request!
 
-## Basic request/reply (request-n-block):
+## Foreground Jobs
+
+This basic request pattern will send a job to to gearman and block until
+a response (or timeout) occurs.
 
  * [Basic Reverse String]({{ site.baseurl }}/examples/reverse/)
  * [Geocoding]({{ site.baseurl }}/examples/geocoding/)
 
-## Background Jobs (fire-n-forget):
+## Background Jobs
+
+Background Jobs will send a job to be processed to gearman and immediately
+return when gearman has the message.
 
  * [Sending Emails]({{ site.baseurl }}/examples/send-emails/)
  * [Logging]({{ site.baseurl }}/examples/logging/)
 
-## Fanout (queue up, execute in parallel):
+## Tasks
+
+Execute multiple jobs in parallel as Tasks. Great for speeding up lots of small
+calls which done in serial take a long time.
 
  * [Feed Fetching & Parsing]({{ site.baseurl }}/examples/feed-fetch-parse/)
  * [Synchronous Image Resize]({{ site.baseurl }}/examples/image-resize/)
