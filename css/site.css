@@ -208,3 +208,32 @@ a:hover {
 article.news {
     padding-bottom: 20px;
 }
+
+
+.main-inner table {
+  border-collapse: collapse;
+  padding: 0; }
+  .main-inner table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    .main-inner table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    .main-inner table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    .main-inner table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    .main-inner table tr th :first-child,
+    .main-inner table tr td :first-child {
+      margin-top: 0; }
+    .main-inner table tr th :last-child,
+    .main-inner table tr td :last-child {
+      margin-bottom: 0; }
