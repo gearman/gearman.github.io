@@ -21,19 +21,19 @@ Usage:
 
 The server options will specify the server's system variables and/or tell the server what actions to take. The following is a list of the available options.
 
-| Short Name | Long Name     | Description                                                        |
-| ---------- | ------------- | -------------------------------------------------------------------|
-| `-p`       | `--port=PORT` | Defines what port number the server will listen on (Default: 4730) |
-| `-v`       | `--version`   | Display the version of java gearman service and exit               |
-| `-?`       | `--help`      | Print the help menu and exit                                       |
+| Short Name | Long Name     | Description                                                         |
+| ---------- | ------------- | ------------------------------------------------------------------- |
+| `-p`       | `--port=PORT` | Defines what port number the server will listen on (Default: 4730)  |
+| `-v`       | `--version`   | Display the version of java gearman service and exit                |
+| `-?`       | `--help`      | Print the help menu and exit                                        |
 
 ### JVM Options
 
 The following is a list of some applicable jvm options.
 
-| Option Name | Description                                                |
-| ----------- | -----------------------------------------------------------|
-| `-server`   | Use Server HotSpot VM. Must be first option (HotSpot Only) |
+| Option Name | Description                                                 |
+| ----------- | ----------------------------------------------------------- |
+| `-server`   | Use Server HotSpot VM. Must be first option (HotSpot Only)  |
 
 ## Gearman
 
