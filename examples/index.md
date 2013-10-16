@@ -30,8 +30,8 @@ return when gearman has the message.
 Execute multiple jobs in parallel as Tasks. Great for speeding up lots of small
 calls which done in serial take a long time.
 
- * [Feed Fetching & Parsing]({{ site.baseurl }}/examples/feed-fetch-parse/)
- * [Synchronous Image Resize]({{ site.baseurl }}/examples/image-resize/)
+ * [Multi-Query]({{ site.baseurl }}/examples/multi-query/)
+ * [<del>Synchronous Image Resize</del>]({{ site.baseurl }}/examples/image-resize/)
 
 # Gearman In The Wild
 
