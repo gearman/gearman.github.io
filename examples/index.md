@@ -31,7 +31,15 @@ Execute multiple jobs in parallel as Tasks. Great for speeding up lots of small
 calls which done in serial take a long time.
 
  * [Multi-Query]({{ site.baseurl }}/examples/multi-query/)
- * [<del>Synchronous Image Resize</del>]({{ site.baseurl }}/examples/image-resize/)
+ * [<del>Synchronous Image Resize</del>]({{ site.baseurl }}/examples/)
+
+## Advanced Foreground Jobs
+
+There are a number of more advanced techniques you can employ on foreground jobs
+such as...
+
+ * [<del>Track Job Progress</del>]({{ site.baseurl }}/examples/)
+ * [<del>Send And Receive Chunked Data</del>]({{ site.baseurl }}/examples/)
 
 # Gearman In The Wild
 
