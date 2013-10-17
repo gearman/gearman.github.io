@@ -139,7 +139,7 @@ can be downloaded at Google Code
  * [Java Gearman Service](https://github.com/gearman/java-service)
    ([Docs]({{ site.baseurl }}/java-gearman-service))
 
-## Gearman Java
+### Gearman Java
 
 A pure Java driver exists on Launchpad.
 
