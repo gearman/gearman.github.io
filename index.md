@@ -157,4 +157,4 @@ From here, you can scale out your clients and workers as needed. The job servers
 can easily handle having hundreds of clients and workers connected at once. You
 can draw your own physical (or virtual) machine lines where capacity allows,
 potentially distributing load to any number of machines. For more details on
-specific uses and installations, see the section on [exanokes]({{ site.baseurl }}/examples/).
+specific uses and installations, see the section on [examples]({{ site.baseurl }}/examples/).
