@@ -33,20 +33,7 @@ Worker
 <div class="code-tabs">
 
 {% highlight php %}
-<?php
-// Create our client object
-$client = new GearmanClient();
-
-// Add a server
-$client->addServer(); // by default host/port will be "localhost" & 4730
-
-echo "Sending job\n";
-
-// Send reverse job
-$result = $client->do("reverse", "Hello!");
-if ($result) {
-  echo "Success: $result\n";
-}
+{% include examples/reverse/php/client.php %}
 {% endhighlight %}
 
 {% highlight java %}
@@ -64,33 +51,7 @@ if ($result) {
 <div class="code-tabs">
 
 {% highlight php %}
-<?php
-// Create our worker object
-$worker = new GearmanWorker();
-
-// Add a server (again, same defaults apply as a worker)
-$worker->addServer();
-
-// Inform the server that this worker can process "reverse" function calls
-$worker->addFunction("reverse", "reverse_fn");
-
-while (1) {
-  print "Waiting for job...\n";
-  $ret = $worker->work(); // work() will block execution until a job is delivered
-  if ($worker->returnCode() != GEARMAN_SUCCESS) {
-    break;
-  }
-}
-
-// A much simple reverse function
-function reverse_fn($job) {
-  $workload = $job->workload();
-  echo "Received job: " . $job->handle() . "\n";
-  echo "Workload: $workload\n";
-  $result = strrev($workload);
-  echo "Result: $result\n";
-  return $result;
-}
+{% include examples/send-emails/php/worker.php %}
 {% endhighlight %}
 
 {% highlight java %}
@@ -105,15 +66,16 @@ function reverse_fn($job) {
 
 ## Running The Client And Worker
 
-Now that we have our client and our worker, startup the server, then start the
-worker, then the client. You should see something like the following.
+Now that we have our client and our worker, startup the gearmand server, start
+the worker, then the client. You should see something like the following.
 
 <img src="{{ site.baseurl }}/img/php-example.png" />
 
 ### Startup Order
 
-// todo: notes about what happens when you start things out of order
-
-## What's Next?
-
-// TODO: Point to next, more complex example
+Be mindful of what happens if you start the client before the worker. You'll
+find that the client blocks (pauses execution) at the doNormal() call. This
+is because you're performaing a "foreground job" in which you wait for the
+job to be processed and the results returned. If there are no workers available
+the process will block until one shows up. You can check out this behaviour by
+starting the client, waiting a few moments, and then starting the worker.
