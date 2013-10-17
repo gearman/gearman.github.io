@@ -109,6 +109,11 @@ A pure PHP API that can be found as Net_Gearman on PEAR.
 
  * Net_Gearman at [PEAR](http://pear.php.net/package/Net_Gearman/) or [Github](https://github.com/brianlmoon/net_gearman)
 
+### GearmanBundle
+
+ * [GearmanBundle](https://github.com/mmoreram/GearmanBundle)
+   (for [Symfony2](http://symfony.com))
+
 ## Python
 
 There are two different Python APIs, one that is a wrapper of the libgearman C
@@ -127,6 +132,10 @@ A python library that wraps the C interface library.
 ### Django
 
  * [Django Libraries](https://pypi.python.org/pypi?%3Aaction=search&term=django_gearman_commands&submit=search)
+
+### Twisted
+
+ * [Twisted Libraries](https://pypi.python.org/pypi/twisted-gears/0.2)
 
 ## Java
 
@@ -163,6 +172,28 @@ using Mono.
 Available on Launchpad as [gearman.net](https://launchpad.net/gearman.net).
 Only [source](https://code.launchpad.net/gearman.net) is available at the
 moment, no releases just yet.
+
+## Ruby
+
+### Gearman-Ruby
+
+Official ruby library for the Gearman distributed job system.
+
+ * [Gearman-Ruby](https://github.com/gearman-ruby/gearman-ruby)
+
+## Go
+
+### Gearman-Go
+
+Go library for the Gearman distributed job system.
+
+ * [Gearman-Go](https://github.com/mikespook/gearman-go)
+
+## Lisp
+
+### Common Lisp
+
+ * [Common Lisp](https://github.com/taksatou/cl-gearman)
 
 ## Databases
 
