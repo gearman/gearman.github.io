@@ -40,6 +40,10 @@ Worker
 {% include examples/reverse/go/client.go %}
 {% endhighlight %}
 
+{% highlight python %}
+{% include examples/reverse/python/client.py %}
+{% endhighlight %}
+
 {% highlight java %}
 // todo
 {% endhighlight %}
@@ -60,6 +64,10 @@ Worker
 
 {% highlight go %}
 {% include examples/reverse/go/worker.go %}
+{% endhighlight %}
+
+{% highlight python %}
+{% include examples/reverse/python/worker.py %}
 {% endhighlight %}
 
 {% highlight java %}
