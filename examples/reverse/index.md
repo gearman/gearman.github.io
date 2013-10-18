@@ -51,7 +51,7 @@ Worker
 <div class="code-tabs">
 
 {% highlight php %}
-{% include examples/send-emails/php/worker.php %}
+{% include examples/reverse/php/worker.php %}
 {% endhighlight %}
 
 {% highlight java %}
