@@ -9,7 +9,7 @@ with one another.
 
 ## Before Starting
 
-Make sure you have gearman installed and language bindings available.
+Make sure you have gearmand installed and language bindings available.
 
 ## The Involved Parties
 
@@ -87,3 +87,9 @@ is because you're performaing a "foreground job" in which you wait for the
 job to be processed and the results returned. If there are no workers available
 the process will block until one shows up. You can check out this behaviour by
 starting the client, waiting a few moments, and then starting the worker.
+
+## Different Languages
+
+Try turning up the Go worker and then run the Python client. Or the Nodejs
+worker and then the PHP client -- you'll find that every language, through
+gearmand, can easily talk to one another.
