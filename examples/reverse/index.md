@@ -36,6 +36,10 @@ Worker
 {% include examples/reverse/php/client.php %}
 {% endhighlight %}
 
+{% highlight go %}
+{% include examples/reverse/go/client.go %}
+{% endhighlight %}
+
 {% highlight java %}
 // todo
 {% endhighlight %}
@@ -52,6 +56,10 @@ Worker
 
 {% highlight php %}
 {% include examples/reverse/php/worker.php %}
+{% endhighlight %}
+
+{% highlight go %}
+{% include examples/reverse/go/worker.go %}
 {% endhighlight %}
 
 {% highlight java %}
