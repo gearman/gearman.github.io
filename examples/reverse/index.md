@@ -44,12 +44,8 @@ Worker
 {% include examples/reverse/python/client.py %}
 {% endhighlight %}
 
-{% highlight java %}
-// todo
-{% endhighlight %}
-
-{% highlight perl %}
-// todo
+{% highlight javascript %}
+{% include examples/reverse/nodejs/client.js %}
 {% endhighlight %}
 
 </div>
@@ -70,12 +66,8 @@ Worker
 {% include examples/reverse/python/worker.py %}
 {% endhighlight %}
 
-{% highlight java %}
-// todo
-{% endhighlight %}
-
-{% highlight perl %}
-// todo
+{% highlight javascript %}
+{% include examples/reverse/nodejs/worker.js %}
 {% endhighlight %}
 
 </div>
