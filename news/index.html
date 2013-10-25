@@ -1,0 +1,12 @@
+---
+layout: default
+title: News
+permalink: /news/
+author: all
+---
+
+<h1>News</h1>
+
+{% for post in site.posts %}
+  {% include news_item.html %}
+{% endfor %}
