@@ -9,6 +9,7 @@ title: Presentations
 
 # Past Presentations
 
+ * [TelAviv.PM October 2013 - Distributed Apps with Gearman - Issac Goldstand](http://telaviv.pm.org/) ([Slides & Recording](http://www.itsgoodconsulting.com/blog/issac-presenting-distributed-apps-with-gearman-at-telaviv-pm/))
  * [MySQL Conference 2011 - Gearman: From the Worker's Perspective - Brian Aker](http://en.oreilly.com/mysql2011/public/schedule/detail/20211)
  * [OSCON 2010 - The Gearman Cookbook - Eric Day](http://www.oscon.com/oscon2010/public/schedule/detail/13813) ([Slides](http://oddments.org/wiki/lib/exe/fetch.php?media=presentations:gearman:gearman_201007_oscon.pdf) &  [code examples](http://sharesend.com/f2vtj))
  * [The London Kohana PHP Conference 2010 - An introduction to using Gearman with Kohana](http://www.developerfusion.com/event/80969/konference-the-london-kohana-conference-2010/) (by Russell Smith, [Slides & code examples](https://speakerdeck.com/ukd1/gearman-kohana))
