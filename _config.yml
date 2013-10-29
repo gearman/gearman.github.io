@@ -2,3 +2,4 @@ safe: true
 lsi: false
 pygments: true
 relative_permalinks: false
+baseurl: http://gearman.org
