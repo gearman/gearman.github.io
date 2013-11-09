@@ -5,3 +5,6 @@ build:
 
 deploy:
 	jekyll serve
+
+check:
+	bundle exec jekyll build
