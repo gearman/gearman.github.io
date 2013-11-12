@@ -88,7 +88,7 @@ and provides a event-driven asynchronous client and worker.
 
 ## Nodejs
 
-[Gearman Nodejs Extension (0.0.1)](https://github.com/mreinstein/node-gearman)
+[Gearman Nodejs Extension (0.0.1)](https://github.com/mreinstein/node-gearman)  
 [GearmaNode Node.js library with support for multiple servers](https://github.com/veny/GearmaNode)
 
 ## PHP
