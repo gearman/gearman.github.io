@@ -8,7 +8,7 @@ title: 'Documentation'
 ## General
 
  * [Getting Started]({{ site.baseurl }}/getting-started/)
- * [Manual]({{ site.baseurl }}/manual/)
+ * [Manual](http://gearman.info)
 
 ## Gearman Internals
 
