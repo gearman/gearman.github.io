@@ -3,6 +3,9 @@ all: build
 build:
 	jekyll build
 
+debug:
+	jekyll build --trace
+
 deploy:
 	jekyll serve
 
