@@ -1,3 +1,8 @@
+---
+layout: default
+title: Gearman Manual
+---
+
 Troubleshooting
 ===============
 
