@@ -1,3 +1,8 @@
+---
+layout: default
+title: Gearman Manual
+---
+
 Workers
 =======
 
@@ -8,7 +13,7 @@ Basic Worker
 
 Every worker has a basic schema that must be met in order for the worker program to run correctly. The worker object must be first created, informed of Gearman Job Servers, assigned functions and function names to do jobs, and placed in a loop to wait for work. 
 
-<code php>
+{% highlight php %}
 <?php
 // ---------------------------------------------
 // START Basic Worker Creation
@@ -31,12 +36,11 @@ while (1)
     break;
 }
 ?>
-</code>
+{% endhighlight %}
 
 The problem with our Worker right now is that it doesn't have any Functions! If you tried to run this PHP worker as is, you would get this error:
-<code>
-Warning: GearmanWorker::work(): gearman_worker_grab_job:no functions have been registered in /home/user/gearman/myWorker.php on line 18
-</code>
+
+  Warning: GearmanWorker::work(): gearman_worker_grab_job:no functions have been registered in /home/user/gearman/myWorker.php on line 18
 
 So let's go ahead and make this "Nowhere Man" worker useful and teach him a trick. 
 
