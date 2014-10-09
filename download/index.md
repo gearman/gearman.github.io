@@ -26,12 +26,12 @@ in the same package.
 
  * The latest version can be found on [Launchpad](https://launchpad.net/gearmand).
 
-## java-gearman-service (Java)
+## Gearman Java Service (Java)
 
 A java implementation that is both the gearman library and a standalone
 job server.
 
- * Find java-gearman-service at [Google Code](http://code.google.com/p/java-gearman-service/)
+ * Gearman Java Service on [GitHub](https://github.com/gearman/java-service)
 
 ## Gearman::Server (Perl)
 
