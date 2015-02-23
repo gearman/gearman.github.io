@@ -58,9 +58,7 @@ check out the latest stable development source. To download and install, run:
 {% highlight bash %}
 bzr branch lp:gearmand
 cd gearmand
-./config/autorun.sh
-./configure
-make
+./bootstrap.sh
 make install
 {% endhighlight %}
 
