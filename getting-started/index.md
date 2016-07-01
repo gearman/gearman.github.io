@@ -52,11 +52,11 @@ make install
 
 #### Compile and install from source repository
 
-The [Bazaar](http://bazaar-vcs.org/) version control system is required to
-check out the latest stable development source. To download and install, run:
+Git is required to check out the latest stable development source. To
+download and install, run:
 
 {% highlight bash %}
-bzr branch lp:gearmand
+git clone https://github.com/gearman/gearmand
 cd gearmand
 ./config/autorun.sh
 ./configure
