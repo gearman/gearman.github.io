@@ -1,5 +1,5 @@
 safe: true
 lsi: false
-pygments: true
+highlighter: rouge
 relative_permalinks: false
 baseurl: http://gearman.org
