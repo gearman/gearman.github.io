@@ -24,7 +24,8 @@ statistics reporting are coming soon. This installs an executable called
 `gearmand` (usually in /usr/local/sbin). The C library, libgearman, is bundled
 in the same package.
 
- * The [latest version is available here](files/)
+ * [1.1.13 and later releases are on Github](https://github.com/gearman/gearmand/releases)
+ * [pre 1.1.13 releases are on Launchpad](https://launchpad.net/gearmand)
 
 ## java-gearman-service (Java)
 
