@@ -5,7 +5,7 @@ title: 'Protocol'
 
 # Gearman Protocol
 
-This file is maintained in the [gearmand project on Launchpad](http://bazaar.launchpad.net/~tangent-trunk/gearmand/1.2/view/head:/PROTOCOL),
+This file is maintained in the [gearmand project on Github](https://github.com/gearman/gearmand/blob/master/PROTOCOL),
 so any modifications should be made there.
 
 {% highlight text %}
@@ -106,6 +106,13 @@ header is:
                     34  SUBMIT_JOB_LOW_BG   REQ    Client
                     35  SUBMIT_JOB_SCHED    REQ    Client
                     36  SUBMIT_JOB_EPOCH    REQ    Client
+                    37  SUBMIT_REDUCE_JOB   REQ    Client
+                    38  SUBMIT_REDUCE_JOB_BACKGROUND REQ    Client
+                    39  GRAB_JOB_ALL        REQ    Worker
+                    40  JOB_ASSIGN_ALL      RES    Worker
+                    41  GET_STATUS_UNIQUE   REQ    Client
+                    42  STATUS_RES_UNIQUE   RES    Client
+
 
 4 byte size       - A big-endian (network-order) integer containing
                     the size of the data being sent after the header.
@@ -175,9 +182,26 @@ SUBMIT_JOB_LOW, SUBMIT_JOB_LOW_BG
     always take precedence, and jobs submitted with the normal versions
     take precedence over the LOW versions.
 
+    The unique ID can be used by the server to reduce queue length. If a
+    job with the same Unique ID has already been submitted, the server
+    may attach this request to the already existing job. This includes
+    jobs already in progress, in which case non-background jobs will be
+    sent the same result as background jobs. This is known commonly as
+    "coalescing".
+
     Arguments:
     - NULL byte terminated function name.
     - NULL byte terminated unique ID.
+    - Opaque data that is given to the function as an argument.
+
+SUBMIT_REDUCE_JOB, SUBMIT_REDUCE_JOB_BACKGROUND
+
+    Works like the other SUBMIT_JOB commands, but adds a reducer argument.
+
+    Arguments:
+    - NULL byte terminated function name.
+    - NULL byte terminated unique ID.
+    - NULL byte terminated reducer.
     - Opaque data that is given to the function as an argument.
 
 SUBMIT_JOB_SCHED
@@ -212,6 +236,13 @@ GET_STATUS
 
     Arguments:
     - Job handle that was given in JOB_CREATED packet.
+
+GET_STATUS_UNIQUE
+
+    A client issues this to get status information for a submitted job.
+
+    Arguments:
+    - Unique value that was given when job was submitted.
 
 OPTION_REQ
 
@@ -258,6 +289,22 @@ STATUS_RES
       (true).
     - NULL byte terminated percent complete numerator.
     - Percent complete denominator.
+
+STATUS_RES_UNIQUE
+
+    This is sent in response to a GET_STATUS_UNIQUE request. This is
+    used by clients that have submitted a job with SUBMIT_JOB_BG to see
+    if the job has been completed, and if not, to get the percentage
+    complete.
+
+    Arguments:
+    - NULL byte terminated job handle.
+    - NULL byte terminated known status, this is 0 (false) or 1 (true).
+    - NULL byte terminated running status, this is 0 (false) or 1
+      (true).
+    - NULL byte terminated percent complete numerator.
+    - NULL byte terminated percent complete denominator.
+    - Count of clients waiting.
 
 OPTION_RES
 
@@ -329,6 +376,13 @@ GRAB_JOB
 GRAB_JOB_UNIQ
 
     Just like GRAB_JOB, but return JOB_ASSIGN_UNIQ when there is a job.
+
+    Arguments:
+    - None.
+
+GRAB_JOB_ALL
+
+    Just like GRAB_JOB_UNIQ, but return JOB_ASSIGN_ALL when there is a job.
 
     Arguments:
     - None.
@@ -460,6 +514,17 @@ JOB_ASSIGN_UNIQ
     - NULL byte terminated unique ID.
     - Opaque data that is given to the function as an argument.
 
+JOB_ASSIGN_ALL
+
+    This is given in response to a GRAB_JOB_ALL request and acts
+    just like JOB_ASSIGN_UNIQ but with the reducer returned.
+
+    Arguments:
+    - NULL byte terminated job handle.
+    - NULL byte terminated function name.
+    - NULL byte terminated unique ID.
+    - NULL byte terminated reducer.
+    - Opaque data that is given to the function as an argument.
 
 Administrative Protocol
 -----------------------
@@ -499,12 +564,17 @@ status
 maxqueue
 
     This sets the maximum queue size for a function. If no size is
-    given, the default is used. If the size is negative, then the queue
-    is set to be unlimited. This sends back a single line with "OK".
+    given, the default is used. If one size is given, it is applied to
+    jobs regardless of priority. If three sizes are given, the sizes
+    are used when testing high-priority, normal, and low-priority jobs,
+    respectively. A zero or negative size indicates no limit.  This
+    command sends back a single line with "OK".
 
     Arguments:
     - Function name.
-    - Optional maximum queue size.
+    - Optional maximum queue size (to apply one maximum at all priorities), or
+      three optional maximum queue sizes (to enforce for high-, normal-, and
+      low-priority job submissions).
 
 shutdown
 
