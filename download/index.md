@@ -118,12 +118,15 @@ A pure PHP API that can be found as Net_Gearman on PEAR.
 
 ## Python
 
-There are two different Python APIs, one that is a wrapper of the libgearman C
-library and one that is pure Python. There is also a package for Django.
+There are three different Python APIs, one that is a wrapper of the libgearman C
+library and two that are pure Python. There is also a package for Django.
 
 ### Pure Python
 
-A pure-Python API that can be found on PyPI as "gearman", and can be installed with "easy_install gearman".
+Two pure-Python API's can be found on PyPI, "gearman" and "gear". They can be installed with "pip install gearman".
+
+ * [gearman](https://pypi.python.org/pypi/gearman) - Basic client library
+ * [gear](https://pypi.python.org/pypi/gear) - Async client library and basic server in python
 
 ### Python C Library Wrapper
 
@@ -190,6 +193,12 @@ Official ruby library for the Gearman distributed job system.
 Go library for the Gearman distributed job system.
 
  * [Gearman-Go](https://github.com/mikespook/gearman-go)
+
+### G2
+
+Go gearman server, client, and worker libraries.
+
+ * [G2](https://github.com/appscode/g2)
 
 ## Lisp
 
