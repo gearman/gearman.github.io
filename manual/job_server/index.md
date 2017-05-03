@@ -11,29 +11,29 @@ Options
 
 Main Options:
 
-  -b, --backlog=BACKLOG      Number of backlog connections for listen.
-  -d, --daemon               Daemon, detach and run in the background.
-  -f, --file-descriptors=FDS Number of file descriptors to allow for the process
-                            (total connections will be slightly less). Default
-                            is max allowed for user.
-  -h, --help                 Print this help menu.
-  -j, --job-retries=RETRIES  Number of attempts to run the job before the job
-                            server removes it. Thisis helpful to ensure a bad
-                            job does not crash all available workers. Default is
-                            no limit.
-  -l, --log-file=FILE        Log file to write errors and information to. Turning
-                            this option on also forces the first verbose level
-                            to be enabled.
-  -L, --listen=ADDRESS       Address the server should listen on. Default is
-                            INADDR_ANY.
-  -p, --port=PORT            Port the server should listen on.
-  -P, --pid-file=FILE        File to write process ID out to.
-  -r, --protocol=PROTOCOL    Load protocol module.
-  -q, --queue-type=QUEUE     Persistent queue type to use.
-  -t, --threads=THREADS      Number of I/O threads to use. Default=0.
-  -u, --user=USER            Switch to given user after startup.
-  -v, --verbose              Increase verbosity level by one.
-  -V, --version              Display the version of gearmand and exit.
+     -b, --backlog=BACKLOG      Number of backlog connections for listen.
+     -d, --daemon               Daemon, detach and run in the background.
+     -f, --file-descriptors=FDS Number of file descriptors to allow for the process
+                               (total connections will be slightly less). Default
+                               is max allowed for user.
+     -h, --help                 Print this help menu.
+     -j, --job-retries=RETRIES  Number of attempts to run the job before the job
+                               server removes it. Thisis helpful to ensure a bad
+                               job does not crash all available workers. Default is
+                               no limit.
+     -l, --log-file=FILE        Log file to write errors and information to. Turning
+                               this option on also forces the first verbose level
+                               to be enabled.
+     -L, --listen=ADDRESS       Address the server should listen on. Default is
+                               INADDR_ANY.
+     -p, --port=PORT            Port the server should listen on.
+     -P, --pid-file=FILE        File to write process ID out to.
+     -r, --protocol=PROTOCOL    Load protocol module.
+     -q, --queue-type=QUEUE     Persistent queue type to use.
+     -t, --threads=THREADS      Number of I/O threads to use. Default=0.
+     -u, --user=USER            Switch to given user after startup.
+     -v, --verbose              Increase verbosity level by one.
+     -V, --version              Display the version of gearmand and exit.
 
   libdrizzle Options:
 
@@ -167,13 +167,13 @@ This creates a background job (-b option) for the function testq (-f testq optio
 
 These are the callback functions being called in the libdrizzle module. We can verify the job is now in the Drizzle database by displaying all rows in the table:
 
-  drizzle> SELECT * FROM test.queue;
-  +--------------------------------------+---------------+----------+---------+
-  | unique_key                           | function_name | priority | data    |
-  +--------------------------------------+---------------+----------+---------+
-  | e73502bf-c4de-416e-bf59-4d3e07379575 | testq         |        1 | payload | 
-  +--------------------------------------+---------------+----------+---------+
-  1 row in set (0 sec)
+    drizzle> SELECT * FROM test.queue;
+    +--------------------------------------+---------------+----------+---------+
+    | unique_key                           | function_name | priority | data    |
+    +--------------------------------------+---------------+----------+---------+
+    | e73502bf-c4de-416e-bf59-4d3e07379575 | testq         |        1 | payload |
+    +--------------------------------------+---------------+----------+---------+
+    1 row in set (0 sec)
 
 The job is now sitting in the runnable queue inside the job server, as well as in the database. If something should happen to the job server at this point (say a crash or restart), the server will replay all jobs in this database table (in this case just one).
 
@@ -236,19 +236,19 @@ HTTP
 
 This protocol plugin allows you to map HTTP requests to Gearman jobs. It only provides client job submission currently, but it may be extended to support other request types in the future. The plugin can handle both GET and POST data, the latter being used to send a workload to the job server. The URL being requested is translated into the function being called. For example, the request:
 
-  POST /reverse HTTP/1.1
-  Content-Length: 12
-   
-  Hello world!
+    POST /reverse HTTP/1.1
+    Content-Length: 12
+
+    Hello world!
 
 Is translated into a job submission request for the function "reverse" and workload "Hello world!". This will respond with:
 
-  HTTP/1.0 200 OK
-  X-Gearman-Job-Handle: H:lap:4
-  Content-Length: 12
-  Server: Gearman/0.8
-   
-  !dlrow olleH
+    HTTP/1.0 200 OK
+    X-Gearman-Job-Handle: H:lap:4
+    Content-Length: 12
+    Server: Gearman/0.8
+
+    !dlrow olleH
 
 The following headers can be passed to change the behavior of the job:
 
@@ -258,16 +258,16 @@ The following headers can be passed to change the behavior of the job:
 
 For example, to run a low priority background job, the following request can be sent:
 
-  POST /reverse HTTP/1.1
-  Content-Length: 12
-  X-Gearman-Background: true
-  X-Gearman-Priority: low
-   
-  Hello world!
+    POST /reverse HTTP/1.1
+    Content-Length: 12
+    X-Gearman-Background: true
+    X-Gearman-Priority: low
+
+    Hello world!
 
 The response for this request will not have any data associated with it since it was a background job:
 
-  HTTP/1.0 200 OK
-  X-Gearman-Job-Handle: H:lap:6
-  Content-Length: 0
-  Server: Gearman/0.8
+    HTTP/1.0 200 OK
+    X-Gearman-Job-Handle: H:lap:6
+    Content-Length: 0
+    Server: Gearman/0.8
