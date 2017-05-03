@@ -62,6 +62,7 @@ Main Options:
 
   http Options:
 
+     --protocol=http
      --http-port=PORT Port to listen on.
 
 Logging
