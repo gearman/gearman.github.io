@@ -101,7 +101,7 @@ libmysqlclient
 
 The libmysqlclient queue was added 0.38. It uses the MySQL binary protocol so it will only work with 4.1 MySQL or above that have enabled the binary protocol. It can be started with:
 
-  gearmand --queue-type=mysql --mysql-host=hostname
+    gearmand --queue-type=mysql --mysql-host=hostname
 
 This will enable the mysql queue and have Gearman attach to the mysql server specified.
 
@@ -124,13 +124,13 @@ Added in 0.20:
 
 The unique_key and function_name do not have to form the only unique key, however that is the key used by gearmand internally. It is a good idea to have some index on them together for fast job deletion. You can have other columns as well, since all SQL statements identify rows by names and do not depend on order or column count. If you have created your own Drizzle table and wish to use it, you can start gearmand as:
 
-  gearmand -q libdrizzle --libdrizzle-db=some_db --libdrizzle-table=gearman_queue
+    gearmand -q libdrizzle --libdrizzle-db=some_db --libdrizzle-table=gearman_queue
 
 Or perhaps you have the table in a remote MySQL table:
 
-  gearmand -q libdrizzle --libdrizzle-host=10.0.0.1 --libdrizzle-user=gearman \
-                         --libdrizzle-password=secret --libdrizzle-db=some_db \
-                         --libdrizzle-table=gearman_queue --libdrizzle-mysql
+    gearmand -q libdrizzle --libdrizzle-host=10.0.0.1 --libdrizzle-user=gearman \
+                           --libdrizzle-password=secret --libdrizzle-db=some_db \
+                           --libdrizzle-table=gearman_queue --libdrizzle-mysql
 
 This command assumes you have a MySQL server running on 10.0.0.1, can login as gearman/secret, and you want your queue stored in some_db.gearman_queue. Note this is the 0.7 syntax, 0.6 had different argument parsing and had a serious bug inside of the libdrizzle queue, so it is recommended to update from 0.6 if using this module.
 
@@ -139,32 +139,32 @@ Example
 
 This example assume you have Drizzle (or you can use MySQL and use the --libdrizzle-mysql flag) with the database 'test' created. We first start the server in debug mode:
 
-  > gearmand -q libdrizzle -vvv
-  INFO Initializing libdrizzle module
-  INFO libdrizzle module using table 'test.queue'
-  ...
-  INFO Entering main event loop
+    > gearmand -q libdrizzle -vvv
+    INFO Initializing libdrizzle module
+    INFO libdrizzle module using table 'test.queue'
+    ...
+    INFO Entering main event loop
 
 Next, connect to the database so you can monitor the queue table:
 
-  > drizzle
-  Welcome to the Drizzle client..  Commands end with ; or \g.
-  Your Drizzle connection id is 6
-  Server version: 2009.06.1014-eday-dev Source distribution
+    > drizzle
+    Welcome to the Drizzle client..  Commands end with ; or \g.
+    Your Drizzle connection id is 6
+    Server version: 2009.06.1014-eday-dev Source distribution
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+    Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
-  drizzle> SELECT * FROM test.queue;
-  Empty set (0 sec)
+    drizzle> SELECT * FROM test.queue;
+    Empty set (0 sec)
 
 Next, add a background job to the job server using the gearman command line client:
 
-  gearman -f testq -b payload
+    gearman -f testq -b payload
 
 This creates a background job (-b option) for the function testq (-f testq option) with the payload being the string "payload". The job server should have printed a few messages out about the job, most importantly a few about the libdrizzle persistent queue module:
 
-  DEBUG libdrizzle add: e73502bf-c4de-416e-bf59-4d3e07379575
-  DEBUG libdrizzle flush
+    DEBUG libdrizzle add: e73502bf-c4de-416e-bf59-4d3e07379575
+    DEBUG libdrizzle flush
 
 These are the callback functions being called in the libdrizzle module. We can verify the job is now in the Drizzle database by displaying all rows in the table:
 
@@ -180,16 +180,16 @@ The job is now sitting in the runnable queue inside the job server, as well as i
 
 Now use the gearman command line tool to create a worker than can "run" this job.
 
-  gearman -f testq -w
+    gearman -f testq -w
 
 This will connect to the job server and output the payload to stdout (you can stop the worker with CTRL-C). The debug messages in the gearmand output will show the job being removed from the queue:
 
-  DEBUG libdrizzle done: e73502bf-c4de-416e-bf59-4d3e07379575
+    DEBUG libdrizzle done: e73502bf-c4de-416e-bf59-4d3e07379575
 
 We can verify it was properly removed from the database be checking the table in Drizzle:
 
-  drizzle> SELECT * FROM test.queue;
-  Empty set (0 sec)
+    drizzle> SELECT * FROM test.queue;
+    Empty set (0 sec)
 
 libmemcached
 ============
@@ -209,11 +209,11 @@ The fields in the table are defined as
 * data BLOB
 * when_to_run INTEGER
 
-  CREATE TABLE gearman_queue(unique_key TEXT PRIMARY KEY,function_name TEXT,when_to_run INTEGER,priority INTEGER,data BLOB);
+      CREATE TABLE gearman_queue(unique_key TEXT PRIMARY KEY,function_name TEXT,when_to_run INTEGER,priority INTEGER,data BLOB);
 
 To use SQLite3 as the peristent queue, enable it on the command line:
 
-  `gearmand -vvv -q libsqlite3 --libsqlite3-db=/tmp/xx.sqlite`
+    gearmand -vvv -q libsqlite3 --libsqlite3-db=/tmp/xx.sqlite
 
 See above for the libdrizzle notes on how to see it in action.  It is very similar: Instead of selecting from 'test.queue' you select from 'gearman_queue'.
 
@@ -223,7 +223,7 @@ To get Postgresql working you need to use the <code>-q Postgeres</code> command 
 
 Below is a command line to get persistent queues working with Postgresql. This command line was run on Ubuntu 12.04 server, Postgresql version 9.1, and Gearman v 0.27.
 
-  gearmand -L 127.0.0.1 --libpq-conninfo 'hostaddr=127.0.0.1 port=5432 dbname=gearman user=postgres' --libpq-table=queue123 --verbose DEBUG -q Postgres</code>
+    gearmand -L 127.0.0.1 --libpq-conninfo 'hostaddr=127.0.0.1 port=5432 dbname=gearman user=postgres' --libpq-table=queue123 --verbose DEBUG -q Postgres</code>
 
 Also note: gearmand will create the table if it does not already exist. In the case above, it will crate a table named **queue123**
 
