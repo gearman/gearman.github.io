@@ -33,6 +33,13 @@ A java implementation that is both the gearman library and a standalone
 job server.
 
  * Find java-gearman-service at [Google Code](http://code.google.com/p/java-gearman-service/)
+ 
+## abraxas (Node.js)
+
+A compatible Node.js implementation of gearman client library and job server, 
+with full end-to-end streaming support.
+
+* [abraxas on NPM](https://www.npmjs.com/package/abraxas)
 
 ## Gearman::Server (Perl)
 
