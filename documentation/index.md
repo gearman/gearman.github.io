@@ -13,7 +13,6 @@ title: 'Documentation'
 ## Gearman Internals
 
  * [Protocol Specification]({{ site.baseurl }}/protocol/)
- * [C Developer Documentation](http://gearman.org/docs/dev/)
 
 ## Language Bindings/Drivers/Frameworks
 
