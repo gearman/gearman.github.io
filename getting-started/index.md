@@ -58,9 +58,7 @@ download and install, run:
 {% highlight bash %}
 git clone https://github.com/gearman/gearmand
 cd gearmand
-./config/autorun.sh
-./configure
-make
+./bootstrap.sh
 make install
 {% endhighlight %}
 
@@ -319,6 +317,6 @@ $ ls -l full.jpg thumb.jpg
 ## Summary
 
 For further applications and examples, please see the [examples]({{ site.baseurl }}/examples/).
-The [mailing list and IRC channel]({{ site.baseurl }}/communications/) can act as
+The [mailing list and IRC channel]({{ site.baseurl }}/communication/) can act as
 a sounding board for what applications may be suitable for Gearman. New ideas,
 use cases, and examples are always welcome!
