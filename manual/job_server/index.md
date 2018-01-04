@@ -219,7 +219,7 @@ See above for the libdrizzle notes on how to see it in action.  It is very simil
 
 Postgresql
 ==========
-To get Postgresql working you need to use the <code>-q Postgeres</code> command line option.
+To get Postgresql working you need to use the <code>-q Postgres</code> command line option.
 
 Below is a command line to get persistent queues working with Postgresql. This command line was run on Ubuntu 12.04 server, Postgresql version 9.1, and Gearman v 0.27.
 
