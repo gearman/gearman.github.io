@@ -2,5 +2,5 @@ safe: true
 lsi: false
 highlighter: rouge
 relative_permalinks: false
-url: "http://gearman.org"
+url: "https://gearman.org"
 baseurl: ""
