@@ -19,18 +19,18 @@ Main Options:
      -b, --backlog=BACKLOG      Number of backlog connections for listen.
      -d, --daemon               Daemon, detach and run in the background.
      -f, --file-descriptors=FDS Number of file descriptors to allow for the process
-                               (total connections will be slightly less). Default
-                               is max allowed for user.
+                                (total connections will be slightly less). Default
+                                is max allowed for user.
      -h, --help                 Print this help menu.
      -j, --job-retries=RETRIES  Number of attempts to run the job before the job
-                               server removes it. Thisis helpful to ensure a bad
-                               job does not crash all available workers. Default is
-                               no limit.
+                                server removes it. Thisis helpful to ensure a bad
+                                job does not crash all available workers. Default is
+                                no limit.
      -l, --log-file=FILE        Log file to write errors and information to. Turning
-                               this option on also forces the first verbose level
-                               to be enabled.
+                                this option on also forces the first verbose level
+                                to be enabled.
      -L, --listen=ADDRESS       Address the server should listen on. Default is
-                               INADDR_ANY.
+                                INADDR_ANY.
      -p, --port=PORT            Port the server should listen on.
      -P, --pid-file=FILE        File to write process ID out to.
      -r, --protocol=PROTOCOL    Load protocol module.
