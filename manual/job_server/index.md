@@ -6,6 +6,11 @@ title: Job Server
 Job Server
 ==========
 
+Latest Documentation
+====================
+
+The [latest documentation for the Gearman Job Server (gearmand)](/gearmand/) is generated automatically from the [GitHub repository](https://github.com/gearman/gearmand). The documentation below is not comprehensive.
+
 Options
 =======
 
