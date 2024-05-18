@@ -24,7 +24,7 @@ statistics reporting are coming soon. This installs an executable called
 `gearmand` (usually in /usr/local/sbin). The C library, libgearman, is bundled
 in the same package.
 
- * [1.1.13 and later releases are on Github](https://github.com/gearman/gearmand/releases)
+ * [1.1.13 and later releases are on GitHub](https://github.com/gearman/gearmand/releases)
  * [pre 1.1.13 releases are on Launchpad](https://launchpad.net/gearmand)
 
 ## java-gearman-service (Java)
@@ -116,7 +116,7 @@ A PHP extension that wraps the libgearman C library.
 
 A pure PHP API that can be found as Net_Gearman on PEAR.
 
- * Net_Gearman at [PEAR](http://pear.php.net/package/Net_Gearman/) or [Github](https://github.com/brianlmoon/net_gearman)
+ * Net_Gearman at [PEAR](http://pear.php.net/package/Net_Gearman/) or [GitHub](https://github.com/brianlmoon/net_gearman)
 
 ### GearmanBundle
 

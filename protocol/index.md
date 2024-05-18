@@ -5,7 +5,7 @@ title: 'Protocol'
 
 # Gearman Protocol
 
-This file is maintained in the [gearmand project on Github](https://github.com/gearman/gearmand/blob/master/PROTOCOL),
+This file is maintained in the [gearmand project on GitHub](https://github.com/gearman/gearmand/blob/master/PROTOCOL),
 so any modifications should be made there.
 
 {% highlight text %}
