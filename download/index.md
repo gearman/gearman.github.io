@@ -52,12 +52,14 @@ This installs an executable called 'gearmand' (usually in /usr/local/bin).
 
 ## libgearman (C)
 
-The C client & worker API under BSD license that can be found in the same
-package as the C server. This library is closely tied with the gearmand C job
-server, sharing low level connection and protocol code.
+The C client & worker APIs are under the BSD license and can be found in the same
+package as the C server. This library is closely tied with the gearmand (C) job
+server, sharing low-level connection and protocol code.
 
- * [Gearman server and library](http://launchpad.net/gearmand/)
-   [(Source)](https://launchpad.net/gearmand)
+ * [Gearman server documentation]({{ site.baseurl }}/gearmand/)
+ * [libgearman library documentation]({{ site.baseurl }}/gearmand/libgearman/)
+ * [(Source repository)](https://github.com/gearman/gearmand)
+ * [(Download releases)](https://github.com/gearman/gearmand/releases)
 
 ## Shell
 
