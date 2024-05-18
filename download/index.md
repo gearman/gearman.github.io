@@ -58,8 +58,8 @@ server, sharing low-level connection and protocol code.
 
  * [Gearman server documentation]({{ site.baseurl }}/gearmand/)
  * [libgearman library documentation]({{ site.baseurl }}/gearmand/libgearman/)
- * [(Source repository)](https://github.com/gearman/gearmand)
- * [(Download releases)](https://github.com/gearman/gearmand/releases)
+ * [(Source)](https://github.com/gearman/gearmand)
+ * [(Download)](https://github.com/gearman/gearmand/releases)
 
 ## Shell
 
@@ -72,19 +72,21 @@ scripts. This is installed as an executable called `gearman` (usually in /usr/lo
 There are three Perl client implementations, two of which are Pure Perl and one
 which is a wrapper around the libgearman C library.
 
-### Gearman::XS
-
-A Perl module that wraps the libgearman C library. On CPAN under
-[Gearman::XS](http://search.cpan.org/dist/Gearman-XS/).
-
- * [Gearman::XS (0.12)](http://launchpad.net/gearmanxs/trunk/0.12/+download/Gearman-XS-0.12.tar.gz)
-
 ### Gearman::Client & ::Worker
 
 This pure Perl API can be found in CPAN under Gearman::Client
-and Gearman::Worker.
+and Gearman::Worker. It supports SSL and is quite robust and
+well maintained.
 
- *  [Perl modules on CPAN](http://search.cpan.org/dist/Gearman/)
+ *  [Perl modules on CPAN](https://metacpan.org/dist/Gearman)
+
+### Gearman::XS
+
+A Perl module that wraps the libgearman C library. On CPAN under
+[Gearman::XS](https://metacpan.org/dist/Gearman-XS). Has not been
+maintained in recent years.
+
+ * [Gearman::XS (0.12)](http://launchpad.net/gearmanxs/trunk/0.12/+download/Gearman-XS-0.12.tar.gz)
 
 ### AnyEvent::Gearman::Client & ::Worker
 
