@@ -29,4 +29,5 @@ your options.
 [Perl]({{ site.baseurl }}/download/#perl),
 [Python]({{ site.baseurl }}/download/#python),
 [Ruby]({{ site.baseurl }}/download/#ruby),
+[Rust]({{ site.baseurl }}/download/#rust),
 [Database UDFs]({{ site.baseurl }}/download/#databases).

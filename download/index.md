@@ -197,6 +197,16 @@ Official ruby library for the Gearman distributed job system.
 
  * [Gearman-Ruby](https://github.com/gearman-ruby/gearman-ruby)
 
+
+## Rust
+
+### Rustygear
+
+Experimental Rust implementation of the Gearman protocol, both client and server
+
+ * [Rustygear](https://crates.io/crates/rustygear)
+ * [Rustygeard](https://crates.io/crates/rustygeard)
+
 ## Go
 
 ### Gearman-Go
