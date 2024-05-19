@@ -19,7 +19,7 @@ title: 'Documentation'
 Select your language -- cross links to download section which details all
 your options.
 
-[C]({{ site.baseurl }}/download/#libgearman_c),
+[C]({{ site.baseurl }}/gearmand/libgearman/),
 [C#/.NET]({{ site.baseurl }}/download/#c__net),
 [Go]({{ site.baseurl }}/download/#go),
 [Java]({{ site.baseurl }}/download/#java),

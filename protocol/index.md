@@ -5,7 +5,7 @@ title: 'Protocol'
 
 # Gearman Protocol
 
-This file is maintained in the [gearmand project on Github](https://github.com/gearman/gearmand/blob/master/PROTOCOL),
+This file is maintained in the [gearmand project on GitHub](https://github.com/gearman/gearmand/blob/master/PROTOCOL),
 so any modifications should be made there.
 
 {% highlight text %}
@@ -174,7 +174,7 @@ SUBMIT_JOB_LOW, SUBMIT_JOB_LOW_BG
     server will then assign a job handle and respond with a JOB_CREATED
     packet.
 
-    If on of the BG versions is used, the client is not updated with
+    If one of the BG versions is used, the client is not updated with
     status or notified when the job has completed (it is detached).
 
     The Gearman job server queue is implemented with three levels:
@@ -336,7 +336,7 @@ CAN_DO_TIMEOUT
 
      Arguments:
      - NULL byte terminated Function name.
-     - Timeout value.
+     - Timeout value (in milliseconds).
 
 CANT_DO
 
@@ -561,6 +561,26 @@ status
     Arguments:
     - None.
 
+prioritystatus
+
+    This sends back a list of all registered functions. Next to each
+    function is the number of queued jobs that are not running, broken down
+    by priority, and the number of capable workers. The columns are tab
+    separated, and the list is terminated with a line containing
+    a single '.' (period). The format is:
+
+    FUNCTION\tHIGH-QUEUED\tNORMAL-QUEUED\tLOW-QUEUED\tAVAILABLE_WORKERS
+
+    Columns:
+    - Function name.
+    - Number of queued high priority jobs.
+    - Number of queued normal priority jobs.
+    - Number of queued low priority jobs.
+    - Available workers registered for this function.
+
+    Arguments:
+    - None.
+
 maxqueue
 
     This sets the maximum queue size for a function. If no size is
@@ -575,15 +595,6 @@ maxqueue
     - Optional maximum queue size (to apply one maximum at all priorities), or
       three optional maximum queue sizes (to enforce for high-, normal-, and
       low-priority job submissions).
-
-shutdown
-
-    Shutdown the server. If the optional "graceful" argument is used,
-    close the listening socket and let all existing connections
-    complete.
-
-    Arguments:
-    - Optional "graceful" mode.
 
 version
 
