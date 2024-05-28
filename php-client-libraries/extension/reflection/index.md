@@ -60,7 +60,6 @@ class GearmanClient {
   public function addServer($host, $port){}
   public function addServers($servers){}
   public function wait(){}
-  public function do($function_name, $workload, $unique = null){}
   public function doNormal($function_name, $workload, $unique = null){}
   public function doHigh($function_name, $workload, $unique = null){}
   public function doLow($function_name, $workload, $unique = null){}

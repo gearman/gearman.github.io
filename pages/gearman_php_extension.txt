@@ -60,7 +60,7 @@ $client->addServer("localhost", 4730);
 echo "Sending job\n";
  
 # Send reverse job
-$result = $client->do("reverse", "Hello!");
+$result = $client->doNormal("reverse", "Hello!");
 if ($result)
   echo "Success: $result\n";
 ?>

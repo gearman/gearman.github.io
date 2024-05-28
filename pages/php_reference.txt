@@ -36,11 +36,11 @@ This list may include functions that are not implemented yet (see [[php reflecti
    * **addOptions(// $options //)** - Add options for a client object
    * **removeOptions(// $options //)** - Remove options for a client object
    * **addServer(// $host, $port //)** - Add a job server to a client. This goes into a list of servers than can be used to run tasks. No socket I/O happens here, it is just added to a list.
-   * **do(// $function_name, $workload, $unique //)** - Run a single task and return an allocated result.
+   * **doNormal(// $function_name, $workload, $unique //)** - Run a single task and return an allocated result.
    * **doHigh(// $function_name, $workload, $unique //)** - Run a high priority task and return an allocated result.
    * **doLow(// $function_name, $workload, $unique //)** - Run a low priority task and return an allocated result.
-   * **doJobHandle()** - Get the job handle for the running task. This should be used between repeated do() and doHigh() calls to get information.
-   * **doStatus()** - Get the status for the running task. This should be used between repeated do() and doHigh() calls to get information.
+   * **doJobHandle()** - Get the job handle for the running task. This should be used between repeated doNormal()/doHigh()/doLow() calls to get information.
+   * **doStatus()** - Get the status for the running task. This should be used between repeated doNormal()/doHigh()/doLow() calls to get information.
    * **doBackground(// $function_name, $workload, $unique //)** - Run a task in the background.
    * **doHighBackground(// $function_name, $workload, $unique //)** - Run a high priority task in the background
    * **doLowBackground(// $function_name, $workload, $unique //)** - Run a low priority task in the background.
