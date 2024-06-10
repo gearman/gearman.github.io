@@ -68,7 +68,7 @@ omitted for brevity):
 // Reverse Client Code
 $client = new GearmanClient();
 $client->addServer();
-print $client->do("reverse", "Hello World!");
+print $client->doNormal("reverse", "Hello World!");
 {% endhighlight %}
 
 This code initializes a client class, configures it to use a job server with

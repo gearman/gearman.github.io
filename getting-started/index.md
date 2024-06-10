@@ -236,7 +236,7 @@ a string to the job server and print the return value.
 <?php
 $client= new GearmanClient();
 $client->addServer();
-print $client->do("reverse", "Hello World!");
+print $client->doNormal("reverse", "Hello World!");
 ?>
 {% endhighlight %}
 
