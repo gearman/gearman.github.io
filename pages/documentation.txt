@@ -5,13 +5,13 @@
   * [[https://blueprints.launchpad.net/gearmand|Gearman Blueprints]]
 ===== API Documentation =====
 
-  * [[http://gearman.info/|C API Documentation]]
+  * [[https://gearman.org/gearmand/libgearman/|C API Documentation]]
   * [[http://docs.php.net/manual/en/book.gearman.php|PHP Extension Docs]]
   * [[PHP Reflection|PHP Extension Reflection]]
   * [[PHP Reference|PHP Extension Reference]]
-  * [[http://search.cpan.org/dist/Gearman/lib/Gearman/Client.pm|Perl Client API Documentation]]
-  * [[http://search.cpan.org/dist/Gearman/lib/Gearman/Task.pm|Perl Task (Client) API Documentation]]
-  * [[http://search.cpan.org/dist/Gearman/lib/Gearman/Worker.pm|Perl Worker API Documentation]]
+  * [[https://metacpan.org/pod/Gearman::Client|Perl Client API Documentation]]
+  * [[https://metacpan.org/pod/Gearman::Task|Perl Task (Client) API Documentation]]
+  * [[https://metacpan.org/pod/Gearman::Worker|Perl Worker API Documentation]]
   * [[http://pear.php.net/package/Net_Gearman/docs/latest/|PHP Net_Gearman PEAR module documentation]]
   * [[mysql_udf_readme|MySQL UDF README file]]
   * [[http://packages.python.org/gearman/ | Python API Documentation]]
